@@ -1,3 +1,4 @@
+@import url("cart.css");
 /* Come to Ghana: shared shop components (buttons, chips, sheets, toasts, test-money label). */
 .shop-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .85rem 1.6rem; border: 0; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; background: var(--accent, #006b3f); color: var(--on-accent, #fff); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
 .shop-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.2); }
