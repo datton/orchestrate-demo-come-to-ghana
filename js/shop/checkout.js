@@ -65,7 +65,7 @@
         '<div class="co-row co-total"><span>Total</span><span>' + S.money(q.total, q.currency) + '</span></div>' +
         '<p id="co-err" class="co-msg is-error" role="alert"></p>' +
         '<button class="shop-btn co-pay" id="co-pay" type="submit" form="co-form">' + (q.total ? 'Pay ' + S.money(q.total, q.currency) + ' (test)' : 'Place order') + '</button>' +
-        '<p class="shop-testmoney" style="margin-top:1rem">Demo shop: test payments only. No real money moves.</p></section></aside>';
+        '<p class="co-msg">Demo shop: test payments only. No real money moves.</p></section></aside>';
     $('co-name').value = keep.name != null ? keep.name : (prof.name || '');
     $('co-email').value = keep.email != null ? keep.email : (prof.email || '');
     if ($('co-gift')) $('co-gift').value = keep.gift || '';
