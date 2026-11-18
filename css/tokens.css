@@ -3,7 +3,7 @@
    warm neutrals instead of stark white, generous space and few sections, slow smooth motion. No photos here, so type scale, tone and rules carry it.
    Palette: warm ivory paper + near-black ink-green neutrals; forest green is the main accent, gold on dark bands and as thin rules,
    Ghana red only as a tiny detail (one rule or dot). Never fill large areas with red or gold.
-   Contrast (AA, measured): --ink on --bg 16.6:1; --ink-soft 7.5:1; --muted on --bg 5.2:1, on --bg-alt 4.7:1; --on-accent on --accent 6.6:1;
+   Contrast (AA, measured): --ink on --bg 16.6:1; --ink-soft 7.5:1; --muted on --bg 5.7:1, on --bg-alt 5.1:1; --on-accent on --accent 6.6:1;
    --accent on --bg 6.0:1; --on-dark on --bg-dark 16.6:1; --accent-bright (gold) on --bg-dark 10.2:1. --gold is decorative on light, never body text.
    Type: system fonts only; serif display for authority, sans body for clarity; clamp() scale, tight tracking on large type.
    Motion: one ease (--ease-slow for big reveals), 400-900 ms, 60 ms stagger; animate transform/opacity/filter only. */
