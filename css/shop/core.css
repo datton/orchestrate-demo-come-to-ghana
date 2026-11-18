@@ -1,0 +1,25 @@
+/* Come to Ghana: shared shop components (buttons, chips, sheets, toasts, test-money label). */
+.shop-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .85rem 1.6rem; border: 0; border-radius: 999px; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; background: var(--accent, #006b3f); color: var(--on-accent, #fff); transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s; }
+.shop-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,0,0,.2); }
+.shop-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+.shop-btn--ghost { background: transparent; color: inherit; box-shadow: inset 0 0 0 1.5px currentColor; }
+.shop-chip { display: inline-block; padding: .35rem .85rem; border-radius: 999px; font-size: .85rem; font-weight: 600; background: rgba(0,107,63,.12); color: inherit; }
+.shop-chip[aria-pressed="true"] { background: var(--accent, #006b3f); color: var(--on-accent, #fff); }
+.shop-card { border-radius: 1.25rem; padding: clamp(1.1rem, 3vw, 1.75rem); background: var(--surface, #fff); box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+.shop-price { font-weight: 700; letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
+.shop-field { display: grid; gap: .35rem; margin-block: 1rem; }
+.shop-field label { font-weight: 600; }
+.shop-field :is(input, select, textarea) { font: inherit; padding: .75rem 1rem; border: 1.5px solid #8a94a0; border-radius: .75rem; background: #fff; color: #111; }
+.shop-error { color: #b42318; font-size: .9rem; }
+.shop-sheet-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.5); opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 90; }
+.shop-sheet-backdrop.is-open { opacity: 1; pointer-events: auto; }
+.shop-sheet { position: fixed; inset: auto 0 0 0; max-height: 88svh; overflow: auto; background: var(--surface, #fff); color: #111; border-radius: 1.5rem 1.5rem 0 0; padding: 1.5rem; transform: translateY(100%); transition: transform .45s cubic-bezier(.2,.7,.2,1); z-index: 100; }
+.shop-sheet.is-open { transform: none; }
+@media (min-width: 48rem) { .shop-sheet--side { inset: 0 0 0 auto; width: min(26rem, 100%); max-height: none; border-radius: 1.5rem 0 0 1.5rem; transform: translateX(100%); } .shop-sheet--side.is-open { transform: none; } }
+.shop-toasts { position: fixed; left: 50%; bottom: 1.25rem; transform: translateX(-50%); display: grid; gap: .5rem; z-index: 200; }
+.shop-toast { padding: .7rem 1.2rem; border-radius: 999px; background: #111; color: #fff; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,.3); animation: shop-toast-in .4s cubic-bezier(.2,.7,.2,1); transition: opacity .4s; }
+.shop-toast.is-out { opacity: 0; }
+@keyframes shop-toast-in { from { opacity: 0; transform: translateY(12px); } }
+.shop-testmoney { font-size: .9rem; font-weight: 600; padding: .6rem 1rem; border-radius: .75rem; background: #fff4d6; color: #5c4200; }
+.shop-btn:focus-visible, .shop-chip:focus-visible, .shop-field :is(input, select, textarea):focus-visible { outline: 3px solid var(--accent, #006b3f); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .shop-sheet, .shop-sheet-backdrop, .shop-btn, .shop-toast { transition: none; animation: none; } }

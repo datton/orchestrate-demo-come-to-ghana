@@ -1,0 +1,6 @@
+/* Come to Ghana: site-wide base. Tokens in tokens.css, layout in layout.css, shop parts in css/shop/. */
+@view-transition { navigation: auto; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--font-body, system-ui, -apple-system, "Segoe UI", sans-serif); line-height: 1.6; }
+.guide-note { font-size: .9rem; padding: .9rem 1.1rem; border-radius: .9rem; background: rgba(0,0,0,.05); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
