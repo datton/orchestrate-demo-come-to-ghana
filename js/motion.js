@@ -59,7 +59,7 @@
         if (e.target.hasAttribute('data-count')) count(e.target);
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('[data-split], [data-reveal], [data-count]').forEach(function (el) {
+    document.querySelectorAll('[data-split], [data-reveal], [data-count], .hv-rule').forEach(function (el) {
       if (el.hasAttribute('data-count') && reduce) { count(el); return; }
       io.observe(el);
     });
@@ -80,6 +80,14 @@
     });
 
     var bar = document.createElement('div'); bar.className = 'hv-progress'; bar.setAttribute('aria-hidden', 'true'); bar.innerHTML = '<i></i>'; document.body.appendChild(bar);
+    // Marquee speeds up with scroll speed and eases back (playbackRate only; no scroll hijacking).
+    var tracks = [].slice.call(document.querySelectorAll('.hv-marquee-track')), vel = 0, lastY = scrollY, rate = 1;
+    if (!reduce && tracks.length) (function loop() {
+      var y = scrollY; vel = vel * 0.9 + (y - lastY) * 0.1; lastY = y;
+      var target = 1 + Math.min(Math.abs(vel) * 0.35, 5); rate += (target - rate) * 0.08;
+      tracks.forEach(function (t) { var an = t.getAnimations && t.getAnimations()[0]; if (an) an.playbackRate = rate; });
+      requestAnimationFrame(loop);
+    })();
     var par = [].slice.call(document.querySelectorAll('[data-parallax]')), ticking = false;
     function update() {
       ticking = false;
