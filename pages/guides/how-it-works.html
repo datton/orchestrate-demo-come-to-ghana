@@ -8,38 +8,60 @@
 <link rel="stylesheet" href="../../css/tokens.css"> <link rel="stylesheet" href="../../css/layout.css"> <link rel="stylesheet" href="../../css/site.css"> <link rel="stylesheet" href="../../css/shop/core.css"> <link rel="stylesheet" href="../../css/shop/cart.css">
 <script defer src="../../js/nav.js"></script> <script defer src="../../js/motion.js"></script> <script defer src="../../js/app.js"></script> <script defer src="../../js/shop/core.js"></script> <script defer src="../../js/shop/cart.js"></script>
 <style>
-  .how-hero h1 { font-size: clamp(2.75rem, 8vw, 6.5rem); letter-spacing: -.03em; line-height: 1; margin: 0 0 1.25rem; }
-  .how-hero p { max-width: 60ch; font-size: clamp(1.1rem, 2vw, 1.4rem); }
-  .how-steps { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: clamp(1.5rem, 4vw, 3rem); counter-reset: s; }
-  .how-steps li { counter-increment: s; display: grid; grid-template-columns: auto 1fr; gap: 1rem clamp(1rem, 4vw, 3rem); align-items: start; }
-  .how-steps li::before { content: counter(s); font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 700; line-height: .9; letter-spacing: -.04em; color: var(--accent, #006b3f); }
-  .how-steps h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin: 0 0 .5rem; letter-spacing: -.01em; }
-  .how-steps p { margin: 0; max-width: 55ch; font-size: clamp(1.05rem, 1.6vw, 1.25rem); }
-  .how-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+  .g-hero { min-height: 78svh; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(7rem, 14vw, 11rem) clamp(3rem, 7vw, 6rem); }
+  .g-hero h1 { font-size: var(--fs-hero); line-height: var(--lh-tight); margin: .5rem 0 1.5rem; max-width: 12ch; }
+  .g-hero .lede { font-size: var(--fs-lg); max-width: 48ch; color: var(--on-dark-soft); margin: 0; }
+  .g-hero .eyebrow { margin: 0; }
+  .g-sec { padding-block: var(--space-section); }
+  .g-sec h2 { font-size: var(--fs-xl); margin: 0 0 var(--space-5); }
+  .g-notes { padding-block: var(--space-7); display: grid; gap: 1rem; }
+  .g-notes p { margin: 0; }
+  .g-steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  .g-steps > li { max-width: none; counter-increment: s; display: grid; grid-template-columns: auto 1fr; gap: .5rem clamp(1.25rem, 5vw, 4.5rem); padding-block: clamp(2rem, 5vw, 3.75rem); border-top: 1px solid var(--line); }
+  .g-steps > li:last-child { border-bottom: 1px solid var(--line); }
+  .g-steps > li::before { content: counter(s, decimal-leading-zero); font-family: var(--font-display); font-size: clamp(3rem, 2rem + 6vw, 7rem); line-height: .9; color: var(--gold); letter-spacing: var(--track-display); }
+  .g-steps h3 { font-size: var(--fs-step); margin: 0 0 .5rem; }
+  .g-steps p { margin: 0; color: var(--ink-soft); font-size: var(--fs-lg); max-width: 50ch; }
+  .g-card { font-family: var(--font-mono); font-size: clamp(1.25rem, 1rem + 1.6vw, 2.25rem); letter-spacing: .06em; color: var(--accent-bright); margin: 1rem 0; }
+  .g-dark { padding-block: var(--space-section); }
+  .g-dark h2 { font-size: var(--fs-xl); margin: 0 0 var(--space-4); }
+  .g-dark p { color: var(--on-dark-soft); font-size: var(--fs-lg); }
+  .g-dark .shop-testmoney { color: #5c4200; font-size: var(--fs-sm); }
+  .band--dark a.shop-btn { color: var(--on-accent); text-decoration: none; }
+  .band--dark a.shop-btn--ghost { color: var(--on-dark); }
+  .g-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: var(--space-6); }
 </style>
 </head>
 <body>
 <main id="main">
-  <section class="band how-hero">
-    <h1 data-words>From question to guide in four steps</h1>
-    <p data-reveal>No account to set up and no waiting for a reply. Pay, and what you bought is ready at once.</p>
-  </section>
-  <section class="band band--dark" aria-labelledby="how-h">
-    <h2 id="how-h" data-reveal>How it works</h2>
-    <ol class="how-steps">
-      <li data-reveal><div><h3>Choose your plan</h3><p>Read the guide for your traveller type, then pick the plan that matches. Each plan lists exactly what is included and its price in euro. Our service fee is separate from government fees, which are paid to the authority.</p></div></li>
-      <li data-reveal><div><h3>Pay with a test card</h3><p>This is a demonstration site, so payment runs in test mode and no real money moves. Use the card number 4242 4242 4242 4242 with any future date and any three digits.</p></div></li>
-      <li data-reveal><div><h3>Get your guide</h3><p>We offer guidance and document preparation, and we never promise approval: the authority decides. Your order is ready the moment payment goes through. The confirmation page shows what you bought, what to prepare and what happens next.</p></div></li>
-      <li data-reveal><div><h3>Find it again, and ask</h3><p>Every purchase stays under My purchases in this browser, with your guide unlocked. The order confirmation says how to reach us with questions about your plan.</p></div></li>
+  <header class="band band--dark g-hero">
+    <p class="eyebrow">How it works</p>
+    <h1>Four steps. No waiting.</h1>
+    <p class="lede">No account to set up and no wait for a reply. Pay, and what you bought is ready at once.</p>
+  </header>
+
+  <section class="band g-sec" aria-labelledby="how-h">
+    <h2 id="how-h">From question to guide</h2>
+    <ol class="g-steps">
+      <li><div><h3>Choose your plan</h3><p>Read the guide for your traveller type, then pick the plan that matches. Each plan lists exactly what is included and its price in euro. Our service fee is separate from government fees, which are paid to the authority.</p></div></li>
+      <li><div><h3>Pay with a test card</h3><p>This is a demonstration site, so payment runs in test mode and no real money moves. Use the card number below with any future date and any three digits.</p></div></li>
+      <li><div><h3>Get your guide</h3><p>We offer guidance and document preparation, and we never promise approval: the authority decides. Your order is ready the moment payment goes through, with what you bought, what to prepare and what happens next.</p></div></li>
+      <li><div><h3>Find it again, and ask</h3><p>Every purchase stays under My purchases in this browser, with your guide unlocked. The order confirmation says how to reach us with questions about your plan.</p></div></li>
     </ol>
   </section>
-  <section class="band">
+
+  <section class="band band--dark g-dark" aria-labelledby="how-test-h">
+    <h2 id="how-test-h">The test card</h2>
+    <p class="g-card" aria-label="Test card number 4242 4242 4242 4242">4242 4242 4242 4242</p>
     <p class="shop-testmoney" role="note">Demo shop: test payments only. No real money moves.</p>
-    <p data-reveal>General information, not legal, tax or immigration advice. Confirm with the authority or a licensed Ghanaian adviser. Government fees are set by the authority, paid separately, and can change. Last checked 18.11.2026.</p>
-    <div class="how-cta">
+    <div class="g-cta">
       <a class="shop-btn" href="index.html">Browse the guides</a>
       <a class="shop-btn shop-btn--ghost" href="../services.html">See plans and prices</a>
     </div>
+  </section>
+
+  <section class="band g-notes" aria-label="Important notes">
+    <p class="guide-note">General information, not legal, tax or immigration advice. Confirm with the authority or a licensed Ghanaian adviser. Government fees are set by the authority, paid separately, and can change. Last checked 18.11.2026.</p>
   </section>
 </main>
 </body>

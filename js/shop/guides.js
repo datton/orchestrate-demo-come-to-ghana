@@ -22,21 +22,18 @@
     var shown = GUIDES.filter(function (g) { return active === 'All' || g.type === active; });
     list.innerHTML = shown.map(function (g) {
       var p = plans[g.slug];
-      var price = p ? '<p class="guide-plan">Matching plan: <span class="shop-price">' + esc(window.Shop ? Shop.money(p.price) : p.price) + '</span></p>' : '';
-      return '<li class="shop-card guide-card" data-reveal>' +
-        '<span class="shop-chip">' + esc(g.type) + '</span>' +
-        '<h3><a href="' + g.slug + '.html">' + esc(g.title) + '</a></h3>' +
-        '<p>' + esc(g.blurb) + '</p>' + price +
-        '<a class="shop-btn shop-btn--ghost" href="' + g.slug + '.html" aria-label="Read the guide: ' + esc(g.title) + '">Read the guide</a></li>';
+      var price = p ? '<div class="g-plan">From<strong class="shop-price">' + esc(window.Shop ? Shop.money(p.price) : p.price) + '</strong></div>' : '';
+      return '<li><article class="g-row">' +
+        '<h3><a href="' + g.slug + '.html">' + esc(g.title) + '</a></h3>' + price +
+        '<div class="g-meta"><p class="eyebrow g-type">' + esc(g.type) + '</p><p>' + esc(g.blurb) + '</p></div></article></li>';
     }).join('');
     if (count) count.textContent = shown.length === 1 ? '1 guide' : shown.length + ' guides';
-    list.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-in'); });
   }
 
   if (filters) {
     var types = ['All'].concat(GUIDES.map(function (g) { return g.type; }));
     filters.innerHTML = types.map(function (t) {
-      return '<button type="button" class="shop-chip" aria-pressed="' + (t === active) + '" data-type="' + esc(t) + '">' + esc(t) + '</button>';
+      return '<button type="button" aria-pressed="' + (t === active) + '" data-type="' + esc(t) + '">' + esc(t) + '</button>';
     }).join('');
     filters.addEventListener('click', function (e) {
       var b = e.target.closest('button[data-type]');
