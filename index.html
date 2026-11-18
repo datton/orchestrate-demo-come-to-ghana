@@ -10,14 +10,15 @@
 <style>
   @view-transition { navigation: auto; }
   .h-dark { background: radial-gradient(70rem 36rem at 90% -10%, color-mix(in srgb, var(--accent-bright, #f5c542) 22%, transparent), transparent 60%), var(--bg-dark, #10231a); color: var(--on-dark, #f4f7f4); }
-  .h-hero { min-height: 100svh; display: flex; align-items: center; padding-block: clamp(6rem, 10vw, 9rem) clamp(3rem, 6vw, 5rem); }
-  .h-hero h1 { font-size: clamp(3.2rem, 10.5vw, 9rem); letter-spacing: -.045em; line-height: .94; margin: 0 0 clamp(1.5rem, 3vw, 2.5rem); max-width: 12ch; }
-  .h-eyebrow { font-family: var(--font-mono, ui-monospace, monospace); font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; opacity: .8; margin: 0 0 1.5rem; }
-  .h-lede { max-width: 56ch; font-size: clamp(1.15rem, 2.1vw, 1.5rem); line-height: 1.45; margin: 0 0 1.5rem; }
-  .h-kinetic { font-weight: 700; font-size: clamp(1.4rem, 3.4vw, 2.6rem); letter-spacing: -.02em; margin: 0 0 2.25rem; }
+  .h-hero { min-height: 100svh; display: flex; align-items: center; padding-block: clamp(5.5rem, 8vw, 7rem) clamp(2rem, 4vw, 3rem); }
+  .h-hero > .hv-wrap { width: 100%; margin-inline: 0; }
+  .h-hero h1 { font-size: clamp(3rem, min(8vw, 10.5svh), 7.5rem); letter-spacing: -.04em; line-height: .96; margin: 0 0 clamp(1rem, 2vw, 1.75rem) 0; max-width: 14ch; }
+  .h-eyebrow { font-family: var(--font-mono, ui-monospace, monospace); font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; opacity: .8; margin: 0 0 1rem; }
+  .h-lede { max-width: 56ch; font-size: clamp(1.1rem, 1.8vw, 1.35rem); line-height: 1.45; margin: 0 0 1.25rem; }
+  .h-kinetic { font-weight: 700; font-size: clamp(1.3rem, 3vw, 2.2rem); letter-spacing: -.02em; margin: 0 0 1.5rem; }
   .h-kinetic .hv-rotate { color: var(--accent-bright, #f5c542); }
   .h-cta { display: flex; flex-wrap: wrap; gap: .9rem; align-items: center; }
-  .h-dark .shop-btn--ghost { color: inherit; border-color: currentColor; }
+  .h-dark .shop-btn--ghost { color: var(--on-dark, #f4f7f4); background: transparent; border: 1.5px solid rgba(255,255,255,.55); }
   .h-fine { font-size: .92rem; opacity: .8; max-width: 62ch; margin-top: 1.75rem; }
   .h-h2 { font-size: clamp(2.4rem, 7vw, 5.5rem); letter-spacing: -.04em; line-height: 1; margin: 0 0 1.5rem; max-width: 16ch; }
   .h-sub { max-width: 58ch; font-size: clamp(1.1rem, 2vw, 1.35rem); margin: 0 0 2.5rem; }
@@ -69,7 +70,7 @@
 <body>
 <main id="main">
 
-  <section class="hv-section h-dark h-hero hv-full" aria-labelledby="h-title">
+  <section class="hv-section h-dark h-hero" aria-labelledby="h-title">
     <div class="hv-wrap">
       <p class="h-eyebrow">Guidance and document preparation for Ghana</p>
       <h1 id="h-title" data-words>Arrive in Ghana with everything in order</h1>
@@ -93,7 +94,7 @@
     </div>
   </section>
 
-  <section class="hv-section h-dark hv-full" data-scrolly aria-labelledby="how-h">
+  <section class="hv-section h-dark" data-scrolly aria-labelledby="how-h">
     <div class="hv-wrap">
       <h2 id="how-h" class="h-h2">How it works</h2>
       <div class="hv-scrolly">
@@ -131,7 +132,7 @@
     </div>
   </section>
 
-  <section class="hv-section h-dark hv-full" aria-labelledby="trust-h">
+  <section class="hv-section h-dark" aria-labelledby="trust-h">
     <div class="hv-wrap">
       <h2 id="trust-h" class="h-h2">Facts you can check</h2>
       <p class="h-sub">From our fact sheet, checked on 18.11.2026. Confirm each with the authority before you rely on it.</p>
@@ -165,7 +166,7 @@
     </div>
   </section>
 
-  <section class="hv-section h-dark h-final hv-full" aria-labelledby="final-h">
+  <section class="hv-section h-dark h-final" aria-labelledby="final-h">
     <div class="hv-wrap">
       <h2 id="final-h">Ready when you are</h2>
       <p class="h-lede">Pick your plan, or start with a guide. Either way, you will know what to do next.</p>
