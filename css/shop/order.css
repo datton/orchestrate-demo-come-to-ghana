@@ -1,5 +1,5 @@
 /* Come to Ghana: order confirmation and My purchases. Tokens only. */
-.ord { padding-bottom: clamp(5rem, 12vw, 10rem); }
+.ord { max-width: 70rem; margin-inline: auto; padding: 0 1rem clamp(5rem, 12vw, 10rem); }
 .ord-hero { padding-block: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 4vw, 3rem); }
 .ord-hero h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); letter-spacing: -.03em; line-height: 1.02; margin: 0; max-width: 18ch; }
 .ord-hero h1 .ow { display: inline-block; animation: ord-rise .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 60ms); }
@@ -26,7 +26,7 @@
 .ord-total div { display: flex; justify-content: space-between; gap: 1rem; }
 .ord-total .is-big { font-size: 1.4rem; font-weight: 800; margin-top: .4rem; }
 .ord-next { display: grid; gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
-.ord-next li { padding-left: 1rem; border-left: 4px solid var(--accent, #0d6b3d); }
+.ord-next > li { padding-left: 1rem; border-left: 4px solid var(--accent, #0d6b3d); }
 .ord-next ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .ord-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; align-items: center; }
 .ord-banner { padding: 1rem 1.25rem; border-radius: 1rem; background: var(--surface-2, #f5f2ea); font-weight: 600; margin-block: 1rem; }
@@ -41,3 +41,5 @@
 .ord-demo { font-size: .9rem; max-width: 65ch; }
 .ord [hidden] { display: none !important; }
 @media (prefers-reduced-motion: reduce) { .ord-hero h1 .ow { animation: none; } }
+.ord-next a:not(.shop-btn), .ord-orders a:not(.shop-btn) { color: var(--accent, #0d6b3d); font-weight: 600; }
+.ord-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

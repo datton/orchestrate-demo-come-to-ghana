@@ -66,7 +66,7 @@
     var at = {}; (o.steps || []).forEach(function (s) { at[s.id] = s; });
     return STAGES.map(function (s, i) {
       var st = at[s[0]] || {}, done = !!st.at;
-      return '<li class="' + (done ? 'is-done' : '') + '"><span aria-hidden="true">' + (done ? '✓' : i + 1) + '</span><div>' + esc(s[1]) + (done ? '<small>' + fmt(st.at) + '</small>' : '') + '<span class="hv-sr" style="position:absolute;width:1px;height:1px;overflow:hidden">' + (done ? ' done' : ' waiting') + '</span></div></li>';
+      return '<li class="' + (done ? 'is-done' : '') + '"><span aria-hidden="true">' + (done ? '✓' : i + 1) + '</span><div>' + esc(s[1]) + (done ? '<small>' + fmt(st.at) + '</small>' : '') + '<span class="ord-sr">' + (done ? ' done' : ' waiting') + '</span></div></li>';
     }).join('');
   }
 
