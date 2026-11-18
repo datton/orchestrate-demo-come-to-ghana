@@ -9,7 +9,8 @@
 <script defer src="js/nav.js"></script> <script defer src="js/motion.js"></script> <script defer src="js/app.js"></script> <script defer src="js/shop/core.js"></script> <script defer src="js/shop/cart.js"></script>
 <style>
   @view-transition { navigation: auto; }
-  .home-hero { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; }
+  .home-hero > .hv-wrap { min-height: calc(100svh - 12rem); display: flex; flex-direction: column; justify-content: center; }
+  .home-hero { min-height: 100svh; padding-block: clamp(6rem, 10vw, 8rem) 3rem; display: flex; flex-direction: column; justify-content: center; }
   .home-hero h1 { font-size: clamp(3rem, 9vw, 7rem); letter-spacing: -.035em; line-height: .98; margin: 0 0 1.5rem; max-width: 15ch; }
   .home-lede { max-width: 58ch; font-size: clamp(1.1rem, 2vw, 1.4rem); margin: 0 0 1.5rem; }
   .home-kinetic { font-weight: 700; font-size: clamp(1.4rem, 3.4vw, 2.4rem); margin: 0 0 2rem; }
@@ -24,7 +25,7 @@
   .home-trust { display: grid; gap: 2rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin-top: 2rem; }
   .home-trust h3 { font-size: 1.35rem; margin: 0 0 .4rem; }
   .home-stats { display: grid; gap: 2rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
-  .home-stat strong { display: block; font-size: clamp(3.5rem, 8vw, 6rem); letter-spacing: -.03em; line-height: 1; color: var(--accent-bright, #f5c542); }
+  .home-stat strong { display: block; overflow-wrap: anywhere; font-size: clamp(3.5rem, 8vw, 6rem); letter-spacing: -.03em; line-height: 1; color: var(--accent-bright, #f5c542); }
   .home-ways { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
   .home-ways a { display: block; padding: 1.25rem; border-radius: 1rem; border: 1.5px solid currentColor; text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: transform .3s cubic-bezier(.2,.7,.2,1); }
   .home-ways a:hover { transform: translateY(-3px); }
@@ -34,7 +35,8 @@
 </head>
 <body>
 <main id="main">
-  <section class="band home-hero">
+  <section class="hv-section home-hero hv-full">
+<div class="hv-wrap">
     <h1 data-words>Your way into Ghana, made clear</h1>
     <p class="home-lede">Visas, health paperwork, residence, land and company rules: we explain what you need, check your documents and walk you through each step. Pick the plan for how you are going.</p>
     <p class="home-kinetic">Help for <span class="hv-rotate" data-words="visitors|business travellers|property investors|returning families|students|remote workers">visitors</span></p>
@@ -43,17 +45,21 @@
       <a class="shop-btn shop-btn--ghost" href="pages/guides/index.html">Read the guides</a>
     </div>
     <p class="home-note">Guidance and document preparation only. We are not a government body, embassy or licensed immigration practitioner, and we never promise approval. Demo shop: test payments only, no real money moves.</p>
-  </section>
+  </div>
+</section>
 
   <div class="hv-marquee"><div class="hv-marquee-track">
     <span>E-visa</span><span>Health Declaration</span><span>Yellow fever</span><span>Ghana Card</span><span>Leasehold</span><span>Accra</span>
   </div></div>
 
-  <section class="band">
+  <section class="hv-section">
+<div class="hv-wrap">
     <p class="hv-statement">Ghana is welcoming, but the paperwork changes often, so we check the official sources and date every fact.</p>
-  </section>
+  </div>
+</section>
 
-  <section class="band band--dark" data-scrolly>
+  <section class="hv-section hv-dark hv-full" data-scrolly>
+<div class="hv-wrap">
     <h2 class="home-h2">How it works</h2>
     <div class="hv-scrolly">
       <div class="hv-scrolly-word scrolly-word" aria-hidden="true">Choose</div>
@@ -64,18 +70,22 @@
         <div data-step data-word="Go">Submit with confidence, and land in Accra knowing what to expect.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="band" aria-labelledby="plans-h">
+  <section class="hv-section" aria-labelledby="plans-h">
+<div class="hv-wrap">
     <h2 id="plans-h" class="home-h2">Plans and prices</h2>
     <p class="home-lede">Our fee is separate from government fees, which the authority sets and you pay directly.</p>
     <ul class="home-plans" id="home-plans">
       <li class="shop-card"><h3>Tourist, Business, Property, Returnee, Student, Remote</h3><p>See every plan and what it includes.</p><a class="shop-btn" href="pages/services.html">Open the services page</a></li>
     </ul>
     <p class="home-note">Prices shown are from our price list and start at the standard speed for one traveller. Government fees are extra. Last checked 18.11.2026.</p>
-  </section>
+  </div>
+</section>
 
-  <section class="band band--dark" aria-labelledby="trust-h">
+  <section class="hv-section hv-dark hv-full" aria-labelledby="trust-h">
+<div class="hv-wrap">
     <h2 id="trust-h" class="home-h2">Why trust us</h2>
     <div class="home-trust">
       <div><h3>Facts with dates</h3><p>Every rule carries an as-of date and a link to its official source.</p></div>
@@ -87,11 +97,13 @@
       <div class="home-stat"><strong data-count="6">0</strong><span>traveller types covered</span></div>
       <div class="home-stat"><strong data-count="60">0</strong><span>days a standard e-visa stay can last</span></div>
       <div class="home-stat"><strong data-count="90">0</strong><span>days to enter after an e-visa is issued</span></div>
-      <div class="home-stat"><strong data-count="18" data-suffix=".11.2026">0</strong><span>facts last checked</span></div>
+      <div class="home-stat"><strong data-count="18">0</strong><span>November 2026: date every fact was last checked</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="band" aria-labelledby="guides-h">
+  <section class="hv-section" aria-labelledby="guides-h">
+<div class="hv-wrap">
     <h2 id="guides-h" class="home-h2">Start with a guide</h2>
     <p class="home-lede">Step by step, with what to prepare, costs, timelines and official sources. Pick your situation.</p>
     <ul class="home-ways">
@@ -103,7 +115,8 @@
       <li><a href="pages/guides/remote-work.html">Working remotely<small>What is and is not clear</small></a></li>
     </ul>
     <p class="guide-note">General information, not legal, tax or immigration advice. Confirm with the authority or a licensed Ghanaian adviser.</p>
-  </section>
+  </div>
+</section>
 </main>
 </body>
 </html>
