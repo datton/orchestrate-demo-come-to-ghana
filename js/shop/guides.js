@@ -2,12 +2,12 @@
 (function () {
   'use strict';
   var GUIDES = [
-    { slug: 'tourist', type: 'Visitor', title: 'Visiting Ghana', blurb: 'Plan a short trip: what to prepare before you fly and what to check on arrival.' },
-    { slug: 'diaspora', type: 'Diaspora', title: 'Returning to Ghana', blurb: 'For people with Ghanaian roots coming home to visit, reconnect or settle.' },
-    { slug: 'business', type: 'Business', title: 'Doing business in Ghana', blurb: 'Travelling for meetings, or setting up and registering a business.' },
-    { slug: 'remote-work', type: 'Remote work', title: 'Working remotely from Ghana', blurb: 'Stay longer while you keep your job or clients abroad.' },
-    { slug: 'property', type: 'Property', title: 'Buying property in Ghana', blurb: 'The steps, checks and paperwork before you commit to a purchase.' },
-    { slug: 'student', type: 'Student', title: 'Studying in Ghana', blurb: 'Admission, permits and arrival steps for international students.' }
+    { slug: 'tourist', type: 'Visitor', title: 'Visiting Ghana', blurb: 'Plan a trip: visa, health declaration and what to prepare before you fly.' },
+    { slug: 'diaspora', type: 'Diaspora', title: 'Returning to Ghana', blurb: 'For people with Ghanaian roots coming home: entry, Ghana Card and residence questions.' },
+    { slug: 'business', type: 'Business', title: 'Doing business in Ghana', blurb: 'Travelling for meetings, work permits, tax and bringing equipment.' },
+    { slug: 'remote-work', type: 'Remote work', title: 'Working remotely from Ghana', blurb: 'What is and is not confirmed about working remotely while you are in Ghana.' },
+    { slug: 'property', type: 'Property', title: 'Buying property in Ghana', blurb: 'Leasehold rules, due diligence and the paperwork before you commit.' },
+    { slug: 'student', type: 'Student', title: 'Studying in Ghana', blurb: 'The route for international students and what to prepare on arrival.' }
   ];
   var list = document.getElementById('guide-list');
   if (!list) return;
