@@ -8,127 +8,153 @@
 <link rel="stylesheet" href="../../css/tokens.css"> <link rel="stylesheet" href="../../css/layout.css"> <link rel="stylesheet" href="../../css/site.css"> <link rel="stylesheet" href="../../css/shop/core.css"> <link rel="stylesheet" href="../../css/shop/cart.css">
 <script defer src="../../js/nav.js"></script> <script defer src="../../js/motion.js"></script> <script defer src="../../js/app.js"></script> <script defer src="../../js/shop/core.js"></script> <script defer src="../../js/shop/cart.js"></script>
 <style>
-  main > .band { padding-block: clamp(5rem, 12vw, 10rem); }
-  main > .band--dark { background: var(--bg-dark, #0d1f17); color: var(--on-dark, #fff); }
-  main > .band--alt { background: var(--bg-alt, #f3efe7); }
-  .band--dark a { color: var(--accent-bright, inherit); }
-  .band--dark .gd-steps li::before { color: var(--accent-bright, #4ade80); }
-  .gd-hero h2, .band h2 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -.02em; margin: 0 0 1rem; }
-  .gd-hero h1 { font-size: clamp(2.75rem, 8vw, 6.5rem); letter-spacing: -.03em; line-height: 1; margin: 0 0 1.25rem; }
-  .gd-hero p { max-width: 60ch; font-size: clamp(1.1rem, 2vw, 1.4rem); }
-  .gd-steps { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: clamp(1.5rem, 4vw, 3rem); counter-reset: s; }
-  .gd-steps li { counter-increment: s; display: grid; grid-template-columns: auto 1fr; gap: 1rem clamp(1rem, 4vw, 3rem); align-items: start; }
-  .gd-steps li::before { content: counter(s); font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; line-height: .9; letter-spacing: -.04em; color: var(--accent); }
-  .gd-steps h3 { font-size: clamp(1.4rem, 3vw, 2.1rem); margin: 0 0 .5rem; letter-spacing: -.01em; }
-  .gd-steps p { margin: 0; max-width: 62ch; font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
-  .gd-list { margin: 1.5rem 0 0; padding-left: 1.2rem; display: grid; gap: .9rem; max-width: 65ch; font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
-  .gd-table-wrap { overflow-x: auto; margin-top: 1.5rem; }
-  .gd-table { border-collapse: collapse; width: 100%; min-width: 34rem; }
-  .gd-table th, .gd-table td { text-align: left; padding: .85rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
-  .gd-table thead th { font-size: var(--fs-sm); letter-spacing: .04em; text-transform: uppercase; }
-  .gd-buy { display: grid; gap: 1rem; max-width: 40rem; }
-  .gd-buy h2 { margin: 0; }
-  .gd-price { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; letter-spacing: -.03em; margin: 0; }
-  .gd-sources { columns: 2 18rem; padding-left: 1.2rem; }
-  .gd-sources a, .gd-table a { overflow-wrap: anywhere; }
-  .gd-flag { padding: 1rem 1.25rem; border-radius: 1rem; background: var(--warn-soft, rgba(0,0,0,.06)); max-width: 65ch; }
+  /* Guide page: only what the shared styles (site.css, shop/core.css) do not already give. */
+  .band { padding-block: var(--space-section); }
+  .gd-hero { min-height: 88svh; display: flex; flex-direction: column; justify-content: center; gap: var(--space-5); padding-top: clamp(4rem, 9vw, 7rem); }
+  .gd-hero h1 { font-size: var(--fs-3xl); line-height: .98; margin: 0; max-width: 16ch; }
+  .gd-hero .gd-lead { font-size: var(--fs-lg); color: var(--ink-soft); max-width: 52ch; margin: 0; }
+  .gd-hero .eyebrow::before { content: ""; display: inline-block; width: .5rem; height: .5rem; border-radius: 50%; background: var(--red); margin-inline-end: .7rem; vertical-align: .1em; }
+  .gd-h2 { font-size: var(--fs-2xl); margin: 0 0 var(--space-6); max-width: 18ch; }
+  .gd-glance { list-style: none; margin: var(--space-5) 0 0; padding: var(--space-5) 0 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: var(--space-5); }
+  .gd-glance li { max-width: none; display: grid; gap: .35rem; }
+  .gd-num { font-family: var(--font-display); font-size: var(--fs-2xl); letter-spacing: var(--track-heading); line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
+  .gd-num small { font-size: .4em; letter-spacing: .02em; color: var(--gold); }
+  .gd-cap { font-size: var(--fs-sm); color: var(--muted); }
+  .gd-steps-wrap { display: grid; gap: var(--space-6) clamp(2rem, 6vw, 6rem); grid-template-columns: minmax(0, 1fr); align-items: start; }
+  @media (min-width: 62rem) { .gd-steps-wrap { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } .gd-steps-wrap > header { position: sticky; top: 7rem; } }
+  .gd-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-6); counter-reset: s; }
+  .gd-steps li { counter-increment: s; max-width: none; display: grid; gap: .6rem; padding-top: var(--space-5); border-top: 1px solid var(--line-dark); }
+  .gd-steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--font-display); font-size: var(--fs-xl); color: var(--accent-bright); letter-spacing: .02em; }
+  .gd-steps h3 { font-size: var(--fs-step); margin: 0; }
+  .gd-steps p { margin: 0; color: var(--on-dark-soft); }
+  .gd-facts { list-style: none; margin: 0; padding: 0; display: grid; max-width: 52rem; }
+  .gd-facts li { max-width: none; padding-block: 1.1rem; border-top: 1px solid var(--line); font-size: var(--fs-lg); line-height: 1.5; }
+  .gd-facts li:last-child { border-bottom: 1px solid var(--line); }
+  .gd-table-wrap { overflow-x: auto; }
+  .gd-table { min-width: 36rem; }
+  .gd-table th[scope="row"] { font-size: var(--fs-sm); text-transform: none; letter-spacing: 0; color: var(--ink); font-weight: 600; width: 22%; }
+  .gd-table a, .gd-sources a { overflow-wrap: anywhere; }
+  .gd-buy { max-width: 44rem; display: grid; gap: var(--space-4); }
+  .gd-buy.shop-card { background: var(--surface); color: var(--ink); }
+  .gd-price { font-size: var(--fs-2xl); margin: 0; line-height: 1; }
+  .gd-includes { margin: 0; padding-left: 1.2rem; display: grid; gap: .5rem; }
+  .gd-actions { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+  .gd-sources { columns: 2 18rem; margin: 0; padding-left: 1.2rem; }
+  .gd-sources li { max-width: none; padding-block: .2rem; }
   @media (max-width: 40rem) {
     .gd-table { min-width: 0; }
     .gd-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
     .gd-table tr { display: block; padding: .9rem 0; border-bottom: 1px solid var(--line); }
-    .gd-table th, .gd-table td { display: block; border: 0; padding: .15rem 0; }
+    .gd-table th, .gd-table td { display: block; border: 0; padding: .15rem 0; width: auto !important; }
   }
 </style>
 </head>
 <body>
 <main id="main">
-  <section class="band gd-hero">
+  <header class="band gd-hero">
+    <p class="eyebrow">Business visitor and investor guide</p>
+    <h1 data-split>Doing business in Ghana: enter, work, register</h1>
+    <p class="gd-lead" data-reveal>A business visa covers meetings, consultations and advice. Hands-on work needs a work permit and a residence permit. This guide walks the route, with every fact dated and sourced.</p>
+    <ul class="gd-glance" aria-label="Key figures, as of 18.11.2026">
+      <li data-reveal><span class="gd-num"><small>US$</small> <span data-count="260">260</span></span><span class="gd-cap">standard e-visa fee, single entry</span></li>
+      <li data-reveal><span class="gd-num"><span data-count="60">60</span> <small>days</small></span><span class="gd-cap">usual stay for business visitors</span></li>
+      <li data-reveal><span class="gd-num"><span data-count="183">183</span> <small>days</small></span><span class="gd-cap">in 12 months makes you tax resident</span></li>
+    </ul>
     <p class="guide-note" role="note">General information, not legal, tax or immigration advice. Confirm with the authority or a licensed Ghanaian adviser. Facts as of 18.11.2026.</p>
-    <h1 data-words>Doing business in Ghana: enter, work, register</h1>
-    <p data-reveal>A business visa covers meetings, consultations and advice. Hands-on work needs a work permit and a residence permit. This guide walks the route, with every fact dated and sourced.</p>
-  </section>
+  </header>
 
   <section class="band band--dark" aria-labelledby="steps-h">
-    <h2 id="steps-h" data-reveal>Step by step</h2>
-    <ol class="gd-steps">
-<li data-reveal><div><h3>Check your passport and visa route</h3><p>Your passport should be valid for 6 or more months, counted beyond your departure date. Ordinary passports of Canada, the UK, all EU states, China, India, Japan, South Korea, the Philippines, Vietnam, Malaysia, Pakistan and Bangladesh need a visa. ECOWAS and AES states are visa-free. Visa on arrival was replaced by the May 2026 reform, so do not rely on it: you risk being denied boarding.</p></div></li>
-<li data-reveal><div><h3>Apply for the e-visa online</h3><p>The e-visa has been online since 25.05.2026 at <a href="https://evisa.immigration.gov.gh" rel="noopener" target="_blank">evisa.immigration.gov.gh</a>. The standard single-entry fee is US$260. Higher tiers are not confirmed: check the portal. You cannot edit an application after submitting, and you must answer information requests within 72 hours. Business visitors usually get up to 60 days.</p></div></li>
-<li data-reveal><div><h3>Complete the Health Declaration</h3><p>Mandatory since 12.11.2026, online before departure. Bring your yellow fever certificate: required for all arrivals aged 9 months or more, valid for life, and the vaccine should be given 10 or more days before travel.</p></div></li>
-<li data-reveal><div><h3>Plan equipment and customs</h3><p>Laptops and phones are personal effects. Servers and demo kit go through the Red channel on temporary admission with a guarantee, and must leave unchanged within 90 days. An ATA Carnet is not accepted. Use a licensed customs agent. Declare cash over US$10,000 on form FX-5.</p></div></li>
-<li data-reveal><div><h3>Understand the tax position</h3><p>Pay for work done in Ghana is taxable from day one, with no minimum number of days. The non-resident rate is a flat 25%. Residence means 183 or more days in any 12 months. Treaties are in force with Belgium, the Czech Republic, Denmark, France, Germany, Italy, Mauritius, Morocco, the Netherlands, Qatar, Singapore, South Africa, Switzerland and the UK; none with Canada, China, India, Japan, Korea, the Philippines, Vietnam, Malaysia, Pakistan or Bangladesh. Speak to a tax adviser.</p></div></li>
-<li data-reveal><div><h3>If you will work or stay: permits</h3><p>Hands-on work needs a work permit and a residence permit under the Immigration Act 2000 (Act 573). The company applies. Allow at least 15 to 20 working days. Processing time and validity of the permits are not confirmed: check with the Ghana Immigration Service.</p></div></li>
-<li data-reveal><div><h3>If you will set up a company</h3><p>Registration basics are below. Registration with GIPA follows incorporation and is renewed annually. Take advice from a licensed Ghanaian lawyer before you commit.</p></div></li>
-    </ol>
+    <div class="gd-steps-wrap">
+      <header>
+        <p class="eyebrow">The route</p>
+        <h2 id="steps-h" class="gd-h2" data-reveal>Step by step</h2>
+      </header>
+      <ol class="gd-steps">
+        <li data-reveal><h3>Check your passport and visa route</h3><p>Your passport should be valid for 6 or more months, counted beyond your departure date. Ordinary passports of Canada, the UK, all EU states, China, India, Japan, South Korea, the Philippines, Vietnam, Malaysia, Pakistan and Bangladesh need a visa. ECOWAS and AES states are visa-free. Visa on arrival was replaced by the May 2026 reform, so do not rely on it: you risk being denied boarding.</p></li>
+        <li data-reveal><h3>Apply for the e-visa online</h3><p>The e-visa has been online since 25.05.2026 at <a href="https://evisa.immigration.gov.gh" rel="noopener" target="_blank">evisa.immigration.gov.gh</a>. The standard single-entry fee is US$260. Higher tiers are not confirmed: check the portal. You cannot edit an application after submitting, and you must answer information requests within 72 hours. Business visitors usually get up to 60 days.</p></li>
+        <li data-reveal><h3>Complete the Health Declaration</h3><p>Mandatory since 12.11.2026, online before departure. Bring your yellow fever certificate: required for all arrivals aged 9 months or more, valid for life, and the vaccine should be given 10 or more days before travel.</p></li>
+        <li data-reveal><h3>Plan equipment and customs</h3><p>Laptops and phones are personal effects. Servers and demo kit go through the Red channel on temporary admission with a guarantee, and must leave unchanged within 90 days. An ATA Carnet is not accepted. Use a licensed customs agent. Declare cash over US$10,000 on form FX-5.</p></li>
+        <li data-reveal><h3>Understand the tax position</h3><p>Pay for work done in Ghana is taxable from day one, with no minimum number of days. The non-resident rate is a flat 25%. Residence means 183 or more days in any 12 months. Treaties are in force with Belgium, the Czech Republic, Denmark, France, Germany, Italy, Mauritius, Morocco, the Netherlands, Qatar, Singapore, South Africa, Switzerland and the UK; none with Canada, China, India, Japan, Korea, the Philippines, Vietnam, Malaysia, Pakistan or Bangladesh. Speak to a tax adviser.</p></li>
+        <li data-reveal><h3>If you will work or stay: permits</h3><p>Hands-on work needs a work permit and a residence permit under the Immigration Act 2000 (Act 573). The company applies. Allow at least 15 to 20 working days. Processing time and validity of the permits are not confirmed: check with the Ghana Immigration Service.</p></li>
+        <li data-reveal><h3>If you will set up a company</h3><p>Registration basics are below. Registration with GIPA follows incorporation and is renewed annually. Take advice from a licensed Ghanaian lawyer before you commit.</p></li>
+      </ol>
+    </div>
   </section>
 
   <section class="band" aria-labelledby="prep-h">
-    <h2 id="prep-h" data-reveal>What to prepare</h2>
-    <ul class="gd-list">
-<li data-reveal>Passport valid 6+ months beyond departure, and a photo under 3 months old</li>
-<li data-reveal>Return ticket or itinerary, and proof of accommodation</li>
-<li data-reveal>Yellow fever certificate</li>
-<li data-reveal>Employer letter, and an invitation letter from your Ghanaian host (our Business plan includes a template)</li>
-<li data-reveal>For a work permit: GIPA registration, tax clearance, audited accounts, a Ghana Immigration Clinic medical, a home-country police report, CV and certificates, your contract, a ministry support letter and a Non-Citizen Ghana Card</li>
-<li data-reveal>Working hours: private firms usually keep 08:00 to 17:00 Monday to Friday; government offices often close by 15:00 to 16:00</li>
+    <p class="eyebrow">Before you go</p>
+    <h2 id="prep-h" class="gd-h2" data-reveal>What to prepare</h2>
+    <ul class="gd-facts">
+      <li data-reveal>Passport valid 6+ months beyond departure, and a photo under 3 months old</li>
+      <li data-reveal>Return ticket or itinerary, and proof of accommodation</li>
+      <li data-reveal>Yellow fever certificate</li>
+      <li data-reveal>Employer letter, and an invitation letter from your Ghanaian host (our Business plan includes a template)</li>
+      <li data-reveal>For a work permit: GIPA registration, tax clearance, audited accounts, a Ghana Immigration Clinic medical, a home-country police report, CV and certificates, your contract, a ministry support letter and a Non-Citizen Ghana Card</li>
+      <li data-reveal>Working hours: private firms usually keep 08:00 to 17:00 Monday to Friday; government offices often close by 15:00 to 16:00</li>
     </ul>
   </section>
 
   <section class="band band--alt" aria-labelledby="cost-h">
-    <h2 id="cost-h" data-reveal>Costs and timelines</h2>
+    <p class="eyebrow">Costs and timelines</p>
+    <h2 id="cost-h" class="gd-h2" data-reveal>What it costs, and how long it takes</h2>
     <p data-reveal>Government fees are set by the authority, paid separately, and can change. Last checked 18.11.2026. Our service fee is separate and is shown in euro below.</p>
-    <div class="gd-table-wrap">
+    <div class="gd-table-wrap" role="region" aria-label="Costs and timelines" tabindex="0">
     <table class="gd-table">
       <thead><tr><th scope="col">Item</th><th scope="col">Detail (as of 18.11.2026)</th><th scope="col">Official source</th></tr></thead>
       <tbody>
-<tr><th scope="row">E-visa, standard single entry</th><td>US$260; African nationals pay no fee. Processing sources differ from 48 to 96 hours: allow a week or more.</td><td><a href="https://evisa.immigration.gov.gh" rel="noopener" target="_blank">evisa.immigration.gov.gh</a></td></tr>
-<tr><th scope="row">E-visa validity</th><td>Enter within 90 days of issue; stay up to 60 days, set at the border. Approval does not guarantee entry.</td><td><a href="https://evisa.immigration.gov.gh" rel="noopener" target="_blank">evisa.immigration.gov.gh</a></td></tr>
-<tr><th scope="row">Work permit</th><td>US$1,293 (GIS fees effective 15.05.2025). Allow 15 to 20 working days minimum for the file.</td><td><a href="https://gis.gov.gh/fees-and-charges/" rel="noopener" target="_blank">gis.gov.gh/fees-and-charges</a></td></tr>
-<tr><th scope="row">Residence permit</th><td>US$647 (immigrant quota) or US$500 (GIPA automatic quota). Dependant: GH¢388.</td><td><a href="https://gis.gov.gh/fees-and-charges/" rel="noopener" target="_blank">gis.gov.gh/fees-and-charges</a></td></tr>
-<tr><th scope="row">Non-Citizen Ghana Card</th><td>US$120 first registration (paid in cedis), US$78 a year to renew. Compulsory for foreigners aged 6+ resident 90+ days a year; since 02.02.2026.</td><td><a href="https://fims.org.gh" rel="noopener" target="_blank">fims.org.gh</a></td></tr>
-<tr><th scope="row">Non-resident income tax</th><td>Flat 25% on pay for work done in Ghana.</td><td><a href="https://taxsummaries.pwc.com/ghana" rel="noopener" target="_blank">taxsummaries.pwc.com/ghana</a></td></tr>
-<tr><th scope="row">Company registration (ORC)</th><td>Incorporation GH¢585; annual return GH¢175.</td><td><a href="https://orc.gov.gh" rel="noopener" target="_blank">orc.gov.gh</a></td></tr>
+        <tr><th scope="row">E-visa, standard single entry</th><td>US$260; African nationals pay no fee. Processing sources differ from 48 to 96 hours: allow a week or more.</td><td><a href="https://evisa.immigration.gov.gh" rel="noopener" target="_blank">evisa.immigration.gov.gh</a></td></tr>
+        <tr><th scope="row">E-visa validity</th><td>Enter within 90 days of issue; stay up to 60 days, set at the border. Approval does not guarantee entry.</td><td><a href="https://evisa.immigration.gov.gh" rel="noopener" target="_blank">evisa.immigration.gov.gh</a></td></tr>
+        <tr><th scope="row">Work permit</th><td>US$1,293 (GIS fees effective 15.05.2025). Allow 15 to 20 working days minimum for the file.</td><td><a href="https://gis.gov.gh/fees-and-charges/" rel="noopener" target="_blank">gis.gov.gh/fees-and-charges</a></td></tr>
+        <tr><th scope="row">Residence permit</th><td>US$647 (immigrant quota) or US$500 (GIPA automatic quota). Dependant: GH¢388.</td><td><a href="https://gis.gov.gh/fees-and-charges/" rel="noopener" target="_blank">gis.gov.gh/fees-and-charges</a></td></tr>
+        <tr><th scope="row">Non-Citizen Ghana Card</th><td>US$120 first registration (paid in cedis), US$78 a year to renew. Compulsory for foreigners aged 6+ resident 90+ days a year; since 02.02.2026.</td><td><a href="https://fims.org.gh" rel="noopener" target="_blank">fims.org.gh</a></td></tr>
+        <tr><th scope="row">Non-resident income tax</th><td>Flat 25% on pay for work done in Ghana.</td><td><a href="https://taxsummaries.pwc.com/ghana" rel="noopener" target="_blank">taxsummaries.pwc.com/ghana</a></td></tr>
+        <tr><th scope="row">Company registration (ORC)</th><td>Incorporation GH¢585; annual return GH¢175.</td><td><a href="https://orc.gov.gh" rel="noopener" target="_blank">orc.gov.gh</a></td></tr>
       </tbody>
     </table>
     </div>
   </section>
 
   <section class="band" aria-labelledby="co-h">
-    <h2 id="co-h" data-reveal>Company registration basics</h2>
-    <ul class="gd-list">
+    <p class="eyebrow">Setting up a company</p>
+    <h2 id="co-h" class="gd-h2" data-reveal>Company registration basics</h2>
+    <ul class="gd-facts">
       <li data-reveal>The GIPA Act 2026 (Act 1173, 15.07.2026) removed minimum capital for most foreign investors. Trading enterprises need US$500,000 cash equity and 75% skilled Ghanaian staff.</li>
       <li data-reveal>A company needs at least 2 directors, one of them ordinarily resident in Ghana, and a qualified company secretary.</li>
       <li data-reveal>Beneficial ownership is declared at a 20% threshold.</li>
       <li data-reveal>Stamp duty of 1% applies on a company's stated capital.</li>
       <li data-reveal>If you plan to buy land through a company: one with more than 40% foreign ownership is treated as non-Ghanaian for land, so leasehold rules apply.</li>
     </ul>
-    <p class="gd-flag" data-reveal>Facts as of 18.11.2026. Ask a licensed Ghanaian lawyer to confirm each point before you act. This content needs legal counsel review before real use.</p>
+    <p class="guide-note" data-reveal>Facts as of 18.11.2026. Ask a licensed Ghanaian lawyer to confirm each point before you act. This content needs legal counsel review before real use.</p>
   </section>
+
   <section class="band band--dark" aria-labelledby="buy-h">
-    <div class="gd-buy" data-reveal>
-      <h2 id="buy-h">Business plan</h2>
+    <p class="eyebrow">Get help with this</p>
+    <h2 id="buy-h" class="gd-h2" data-reveal>Business plan</h2>
+    <div class="gd-buy shop-card" data-reveal>
       <p id="gd-desc"></p>
-      <p class="gd-price" id="gd-price" aria-live="polite"></p>
-      <ul class="gd-list" id="gd-includes"></ul>
-      <p class="gd-disc">Government fees are not included in our service fee.</p>
-      <div><button type="button" class="shop-btn" id="gd-add" disabled>Add to cart</button> <a class="shop-btn shop-btn--ghost" href="../services.html">See all plans</a></div>
+      <p class="gd-price shop-price" id="gd-price" aria-live="polite"></p>
+      <ul class="gd-includes" id="gd-includes"></ul>
+      <p class="guide-note">Government fees are not included in our service fee.</p>
+      <div class="gd-actions"><button type="button" class="shop-btn" id="gd-add" disabled>Add to cart</button> <a class="shop-btn shop-btn--ghost" href="../services.html">See all plans</a></div>
       <p class="shop-testmoney" role="note">Demo shop: test payments only. No real money moves.</p>
-      <p class="gd-disc">We provide guidance and document preparation. We are not a government body, embassy or licensed immigration practitioner, and we never promise approval: the authority decides.</p>
+      <p class="guide-note">We provide guidance and document preparation. We are not a government body, embassy or licensed immigration practitioner, and we never promise approval: the authority decides.</p>
     </div>
   </section>
 
   <section class="band" aria-labelledby="src-h">
-    <h2 id="src-h" data-reveal>Official sources</h2>
+    <p class="eyebrow">Check it yourself</p>
+    <h2 id="src-h" class="gd-h2" data-reveal>Official sources</h2>
     <ul class="gd-sources">
-<li><a href="https://evisa.immigration.gov.gh" rel="noopener" target="_blank">evisa.immigration.gov.gh</a></li>
-<li><a href="https://gis.gov.gh/?p=2142" rel="noopener" target="_blank">gis.gov.gh visa requirements</a></li>
-<li><a href="https://gis.gov.gh/fees-and-charges/" rel="noopener" target="_blank">gis.gov.gh fees</a></li>
-<li><a href="https://ehds.ghs.gov.gh/declaration" rel="noopener" target="_blank">ehds.ghs.gov.gh/declaration</a></li>
-<li><a href="https://gra.gov.gh/customs" rel="noopener" target="_blank">gra.gov.gh/customs</a></li>
-<li><a href="https://gipa.gov.gh" rel="noopener" target="_blank">gipa.gov.gh</a></li>
-<li><a href="https://orc.gov.gh" rel="noopener" target="_blank">orc.gov.gh</a></li>
-<li><a href="https://fims.org.gh" rel="noopener" target="_blank">fims.org.gh</a></li>
-<li><a href="https://taxsummaries.pwc.com/ghana" rel="noopener" target="_blank">taxsummaries.pwc.com/ghana</a></li>
-<li><a href="https://bog.gov.gh" rel="noopener" target="_blank">bog.gov.gh notices</a></li>
+      <li><a href="https://evisa.immigration.gov.gh" rel="noopener" target="_blank">evisa.immigration.gov.gh</a></li>
+      <li><a href="https://gis.gov.gh/?p=2142" rel="noopener" target="_blank">gis.gov.gh visa requirements</a></li>
+      <li><a href="https://gis.gov.gh/fees-and-charges/" rel="noopener" target="_blank">gis.gov.gh fees</a></li>
+      <li><a href="https://ehds.ghs.gov.gh/declaration" rel="noopener" target="_blank">ehds.ghs.gov.gh/declaration</a></li>
+      <li><a href="https://gra.gov.gh/customs" rel="noopener" target="_blank">gra.gov.gh/customs</a></li>
+      <li><a href="https://gipa.gov.gh" rel="noopener" target="_blank">gipa.gov.gh</a></li>
+      <li><a href="https://orc.gov.gh" rel="noopener" target="_blank">orc.gov.gh</a></li>
+      <li><a href="https://fims.org.gh" rel="noopener" target="_blank">fims.org.gh</a></li>
+      <li><a href="https://taxsummaries.pwc.com/ghana" rel="noopener" target="_blank">taxsummaries.pwc.com/ghana</a></li>
+      <li><a href="https://bog.gov.gh" rel="noopener" target="_blank">bog.gov.gh notices</a></li>
     </ul>
     <p class="guide-note">Legal, tax and regulatory content on this page needs review by legal counsel before real use.</p>
   </section>
@@ -143,7 +169,7 @@
     Shop.catalog().then(function (c) {
       var it = Shop.item(c, PLAN); if (!it) return;
       document.getElementById('gd-desc').textContent = it.desc;
-      document.getElementById('gd-price').textContent = 'From ' + Shop.money(it.price) + ' service fee';
+      document.getElementById('gd-price').textContent = 'From ' + Shop.money(it.price);
       var ul = document.getElementById('gd-includes');
       (it.includes || []).forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
       btn.disabled = false;
