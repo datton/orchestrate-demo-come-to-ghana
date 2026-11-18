@@ -42,7 +42,7 @@ h2 { letter-spacing: -.03em; }
 
 /* ---------- Header ---------- */
 .hv-header { position: sticky; top: 0; z-index: 200; color: var(--ink, #10231a); view-transition-name: hv-header; transition: transform .55s var(--hv-ease); }
-.hv-header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: color-mix(in srgb, var(--bg, #faf8f3) 82%, transparent); backdrop-filter: blur(18px) saturate(1.5); border-bottom: 1px solid var(--line, rgba(16,35,26,.12)); transition: opacity .4s; }
+.hv-header::before { content: ""; position: absolute; inset: 0; z-index: -1; background-color: var(--bg, #faf8f3); background: color-mix(in srgb, var(--bg, #faf8f3) 97%, transparent); backdrop-filter: blur(18px) saturate(1.5); border-bottom: 1px solid var(--line, rgba(16,35,26,.12)); transition: opacity .4s; }
 .hv-header.is-hidden:not(.menu-open) { transform: translateY(-101%); }
 .hv-header-in { padding-inline: max(var(--hv-gutter), calc((100% - var(--hv-max)) / 2 + var(--hv-gutter))); height: var(--hv-header-h); display: flex; align-items: center; gap: .75rem; transition: height .45s var(--hv-ease); }
 .hv-header.is-stuck .hv-header-in { height: 3.75rem; }
