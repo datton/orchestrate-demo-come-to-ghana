@@ -3,27 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Services and guides | Come to Ghana</title>
-<meta name="description" content="Plans, guides and extras for visiting, working or investing in Ghana, with prices in euro. Demo shop: test payments only.">
+<title>Plans and guides | Come to Ghana</title>
+<meta name="description" content="Six plans for visiting, working, studying, returning to or investing in Ghana, compared side by side, with guides and extras. Prices in euro. Demo shop: test payments only.">
 <link rel="stylesheet" href="../css/tokens.css"> <link rel="stylesheet" href="../css/layout.css"> <link rel="stylesheet" href="../css/site.css"> <link rel="stylesheet" href="../css/shop/core.css"> <link rel="stylesheet" href="../css/shop/cart.css"> <link rel="stylesheet" href="../css/shop/services.css">
 <script defer src="../js/nav.js"></script> <script defer src="../js/motion.js"></script> <script defer src="../js/app.js"></script> <script defer src="../js/shop/core.js"></script> <script defer src="../js/shop/cart.js"></script> <script defer src="../js/shop/services.js"></script>
 </head>
 <body>
 <main id="main">
-  <section class="sv-hero">
-    <h1>Help for every kind of trip to Ghana.</h1>
-    <p>Pick a plan or a guide, choose your options and add it to your cart. Our fee covers guidance and document preparation. Government fees are separate, set by the authority and paid by you.</p>
+  <header class="sv-hero hv-dark">
+    <p class="sv-eyebrow">Plans and guides</p>
+    <h1>One plan for every way into Ghana.</h1>
+    <p class="sv-lede">Choose the plan that fits your trip, see exactly what you get, and pay one clear fee. We prepare and check your paperwork. The authority decides.</p>
+    <nav class="sv-jump" aria-label="On this page"><a href="#plans">Plans</a> <a href="#compare">Compare</a> <a href="#guides">Guides</a> <a href="#extras">Extras</a></nav>
+  </header>
+
+  <section id="plans" class="sv-section" aria-labelledby="sv-plans-h">
+    <h2 id="sv-plans-h" class="sv-h2">Choose your plan</h2>
+    <p class="sv-sub">Prices are our service fee in euro, from the base option. Pick your options on each card.</p>
+    <ul id="sv-plans" class="sv-plans"><noscript><li>Tourist 39 €, Business 149 €, Property investor 490 €, Diaspora and returnee 249 €, Student 99 €, Remote worker 199 €. Turn on JavaScript to choose options and add to your cart.</li></noscript></ul>
   </section>
-  <section aria-labelledby="sv-h">
-    <h2 id="sv-h" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">All services</h2>
-    <div id="sv-filters" class="sv-filters" role="group" aria-label="Filter by type"></div>
-    <p id="sv-count" aria-live="polite" style="opacity:.75"></p>
-    <ul id="sv-list"><noscript><li>Our plans start at 39 € (Tourist), guides from 12 €. Turn on JavaScript to choose options and add to your cart.</li></noscript></ul>
-    <div class="sv-notes">
-      <p class="shop-testmoney" role="note">Demo shop: test payments only. No real money moves.</p>
-      <p>Government fees are set by the authority, paid separately, and can change. Last checked 18.11.2026.</p>
-      <p>General information, not legal, tax or immigration advice. Confirm with the authority or a licensed Ghanaian adviser. We never promise approval: the authority decides.</p>
-    </div>
+
+  <section id="compare" class="sv-section sv-alt" aria-labelledby="sv-cmp-h">
+    <h2 id="sv-cmp-h" class="sv-h2">Compare what you get</h2>
+    <p class="sv-sub">A tick means the item is part of the plan.</p>
+    <div class="sv-table-wrap" role="region" aria-label="Plan comparison table" tabindex="0"><table id="sv-table" class="sv-table"></table></div>
+  </section>
+
+  <section id="guides" class="sv-section" aria-labelledby="sv-g-h">
+    <h2 id="sv-g-h" class="sv-h2">Guides, unlocked at once</h2>
+    <p class="sv-sub">Step-by-step walkthroughs you can read straight after paying, from My purchases.</p>
+    <ul id="sv-guides" class="sv-minis"></ul>
+  </section>
+
+  <section id="extras" class="sv-section sv-alt" aria-labelledby="sv-x-h">
+    <h2 id="sv-x-h" class="sv-h2">Extras</h2>
+    <ul id="sv-extras" class="sv-minis"></ul>
+  </section>
+
+  <section class="sv-section sv-notes" aria-label="Important notes">
+    <p class="shop-testmoney" role="note">Demo shop: test payments only. No real money moves.</p>
+    <p>Our fee is separate from government fees, which are set by the authority, paid separately, and can change. Last checked 18.11.2026.</p>
+    <p>General information, not legal, tax or immigration advice. Confirm with the authority or a licensed Ghanaian adviser. We never promise approval.</p>
   </section>
 </main>
 </body>

@@ -1,24 +1,60 @@
-/* Come to Ghana: services page */
-.sv-hero { padding-block: clamp(5rem, 12vw, 10rem) clamp(2rem, 5vw, 4rem); }
-.sv-hero h1 { font-size: clamp(2.75rem, 8vw, 6.5rem); letter-spacing: -.03em; line-height: 1; margin: 0 0 1.25rem; }
-.sv-hero p { max-width: 60ch; font-size: clamp(1.1rem, 2vw, 1.4rem); }
-.sv-filters { display: flex; flex-wrap: wrap; gap: .6rem; margin-block: 1.5rem .5rem; }
-.sv-filters .shop-chip { font: inherit; font-weight: 600; border: 1.5px solid currentColor; background: transparent; cursor: pointer; padding: .55rem 1.1rem; }
-.sv-filters .shop-chip[aria-pressed="true"] { background: var(--accent, #006b3f); color: var(--on-accent, #fff); border-color: var(--accent, #006b3f); }
-#sv-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr)); }
-.sv-cathead { grid-column: 1 / -1; margin-top: 2rem; }
-.sv-cathead h2 { font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -.02em; margin: 0; }
-.sv-cathead p { margin: .25rem 0 0; opacity: .8; }
-.sv-card { display: flex; flex-direction: column; gap: .5rem; }
-.sv-card h3 { font-size: 1.5rem; margin: .5rem 0 0; }
-.sv-desc { margin: 0; }
-.sv-inc { padding-left: 1.2rem; margin: .25rem 0; }
-.sv-opt { border: 0; padding: 0; margin: .5rem 0 0; display: grid; gap: .4rem; }
-.sv-opt legend { font-weight: 700; margin-bottom: .3rem; padding: 0; }
-.sv-opt label { display: flex; gap: .5rem; align-items: baseline; flex-wrap: wrap; }
-.sv-plus { margin-left: auto; font-variant-numeric: tabular-nums; opacity: .75; }
-.sv-foot { margin-top: auto; padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-.sv-price { margin: 0; font-size: 1.9rem; font-weight: 700; letter-spacing: -.02em; }
-.sv-from { font-size: .9rem; font-weight: 500; opacity: .75; }
-.sv-notes { margin-top: 3rem; padding-bottom: clamp(5rem, 12vw, 10rem); display: grid; gap: .75rem; max-width: 65ch; }
-.sv-opt input:focus-visible { outline: 3px solid var(--accent, #006b3f); outline-offset: 2px; }
+/* Come to Ghana: plans page. Tokens only. */
+.sv-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.sv-hero { padding-block: clamp(7rem, 14vw, 11rem) clamp(3rem, 7vw, 6rem); background: var(--grad-dark, var(--bg-dark)); min-height: 80svh; display: flex; flex-direction: column; justify-content: center; }
+.sv-eyebrow { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .14em; font-size: .85rem; color: var(--accent-bright); margin: 0 0 1.5rem; }
+.sv-hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 9vw, 7rem); letter-spacing: -.035em; line-height: .98; margin: 0 0 1.5rem; max-width: 14ch; }
+.sv-lede { max-width: 60ch; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--on-dark-soft); margin: 0 0 2rem; }
+.sv-jump { display: flex; flex-wrap: wrap; gap: .6rem; }
+.sv-jump a { padding: .55rem 1.1rem; border-radius: 999px; border: 1.5px solid var(--line-dark); color: var(--on-dark); text-decoration: none; font-weight: 600; transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s; }
+.sv-jump a:hover { transform: translateY(-2px); border-color: var(--accent-bright); }
+.sv-section { padding-block: clamp(5rem, 12vw, 10rem); }
+.sv-alt { background: var(--bg-alt); }
+.sv-h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 4.5rem); letter-spacing: -.03em; line-height: 1.05; margin: 0 0 1rem; }
+.sv-sub { max-width: 62ch; color: var(--ink-soft); margin: 0 0 2.5rem; font-size: 1.1rem; }
+.sv-plans { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); align-items: stretch; }
+.sv-plan { position: relative; display: flex; flex-direction: column; gap: .6rem; padding: clamp(1.5rem, 3vw, 2.25rem); border-radius: 1.5rem; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 14px 40px rgba(16,35,26,.08); transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s; }
+.sv-plan:hover { transform: translateY(-4px); box-shadow: 0 22px 54px rgba(16,35,26,.14); }
+.sv-plan.is-feature { background: var(--bg-dark); color: var(--on-dark); border-color: var(--accent-bright); box-shadow: var(--glow), 0 14px 40px rgba(16,35,26,.2); }
+.sv-badge { position: absolute; top: -.8rem; left: 1.5rem; padding: .3rem .9rem; border-radius: 999px; background: var(--accent-bright); color: var(--bg-dark); font-weight: 700; font-size: .8rem; }
+.sv-plan h3 { font-family: var(--font-display); font-size: 1.8rem; letter-spacing: -.02em; margin: 0; }
+.sv-price { margin: 0; font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: -.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.sv-from { font-size: .95rem; font-weight: 500; letter-spacing: 0; opacity: .75; }
+.sv-desc { margin: .25rem 0 0; color: var(--ink-soft); }
+.is-feature .sv-desc { color: var(--on-dark-soft); }
+.sv-inc-h { font-family: var(--font-mono); font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; margin: 1rem 0 .2rem; opacity: .8; }
+.sv-check { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
+.sv-check li { position: relative; padding-left: 1.7rem; }
+.sv-check li::before { content: "✓"; position: absolute; left: 0; font-weight: 700; color: var(--accent); }
+.is-feature .sv-check li::before { color: var(--accent-bright); }
+.sv-opt { border: 0; padding: 0; margin: .75rem 0 0; display: grid; gap: .45rem; }
+.sv-opt legend { font-weight: 700; padding: 0; margin-bottom: .35rem; }
+.sv-opt label { display: flex; gap: .6rem; align-items: baseline; padding: .55rem .8rem; border-radius: .75rem; border: 1.5px solid var(--line); cursor: pointer; }
+.is-feature .sv-opt label { border-color: var(--line-dark); }
+.sv-opt label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); color: var(--ink); }
+.is-feature .sv-opt label:has(input:checked) { border-color: var(--accent-bright); background: rgba(242,193,78,.12); color: var(--on-dark); }
+.sv-plus { margin-left: auto; white-space: nowrap; font-variant-numeric: tabular-nums; opacity: .75; }
+.sv-opt input:focus-visible, .sv-table-wrap:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.is-feature .sv-opt input:focus-visible, .is-feature .sv-add:focus-visible { outline-color: var(--accent-bright); }
+.sv-add { margin-top: auto; align-self: stretch; }
+.sv-plan .sv-check { margin-bottom: .5rem; }
+.sv-plan .sv-opt:last-of-type { margin-bottom: 1.25rem; }
+.is-feature .sv-add { background: var(--accent-bright); color: var(--bg-dark); }
+.sv-table-wrap { overflow-x: auto; border-radius: 1.25rem; border: 1px solid var(--line); background: var(--surface); }
+.sv-table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 52rem; }
+.sv-table th, .sv-table td { padding: .9rem 1rem; text-align: center; border-bottom: 1px solid var(--line); }
+.sv-table thead th { position: sticky; top: 0; background: var(--surface); font-family: var(--font-display); font-size: 1.05rem; vertical-align: bottom; }
+.sv-table tbody th { text-align: left; font-weight: 600; min-width: 15rem; position: sticky; left: 0; background: var(--surface); }
+.sv-table thead th:first-child { text-align: left; position: sticky; left: 0; z-index: 1; }
+.sv-th-price { display: block; font-family: var(--font-body); font-size: .85rem; font-weight: 500; color: var(--muted); }
+.sv-yes { color: var(--accent); font-weight: 800; font-size: 1.2rem; }
+.sv-no { color: var(--muted); }
+.sv-minis { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr)); }
+.sv-mini { display: grid; gap: 1.25rem; padding: clamp(1.25rem, 3vw, 2rem); border-radius: 1.25rem; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(16,35,26,.06); }
+.sv-mini h3 { font-family: var(--font-display); font-size: 1.5rem; margin: 0 0 .4rem; }
+.sv-mini p { margin: 0 0 .8rem; color: var(--ink-soft); }
+.sv-mini-buy { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.sv-mini .sv-price { font-size: 2rem; }
+.sv-mini .sv-add { margin: 0; align-self: auto; }
+.sv-notes { display: grid; gap: .75rem; max-width: 68ch; }
+.sv-notes p { margin: 0; }
+@media (prefers-reduced-motion: reduce) { .sv-plan, .sv-jump a { transition: none; } }

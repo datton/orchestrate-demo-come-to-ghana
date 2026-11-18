@@ -1,62 +1,380 @@
 {
-  "brand": {"name": "Come to Ghana", "short": "Come to Ghana", "kind": "services",
-            "tagline": "Guidance and document preparation for your move, visit or investment in Ghana"},
+  "brand": {
+    "name": "Come to Ghana",
+    "short": "Come to Ghana",
+    "kind": "services",
+    "tagline": "Guidance and document preparation for your move, visit or investment in Ghana"
+  },
   "currency": "EUR",
   "timezone": "Africa/Accra",
   "demo": true,
   "stores": [],
   "categories": [
-    {"id": "plans", "name": "Plans", "blurb": "A guided plan for your kind of trip"},
-    {"id": "guides", "name": "Guides", "blurb": "Step-by-step walkthroughs you can use straight away"},
-    {"id": "addons", "name": "Extras", "blurb": "Add to any plan"}
+    {
+      "id": "plans",
+      "name": "Plans",
+      "blurb": "A guided plan for your kind of trip"
+    },
+    {
+      "id": "guides",
+      "name": "Guides",
+      "blurb": "Step-by-step walkthroughs you can use straight away"
+    },
+    {
+      "id": "addons",
+      "name": "Extras",
+      "blurb": "Add to any plan"
+    }
   ],
   "options": {
-    "speed": {"name": "Review speed", "type": "one", "required": true,
-      "choices": [{"id": "standard", "name": "Standard: reviewed within 3 working days", "price": 0, "default": true},
-                  {"id": "express", "name": "Express: reviewed within 1 working day", "price": 2900}]},
-    "travellers": {"name": "Number of travellers", "type": "one", "required": true,
-      "choices": [{"id": "1", "name": "1 traveller", "price": 0, "default": true},
-                  {"id": "2", "name": "2 travellers", "price": 2500},
-                  {"id": "3", "name": "3 travellers", "price": 5000},
-                  {"id": "4", "name": "4 travellers", "price": 7500}]},
-    "extras": {"name": "Extras", "type": "many", "required": false, "max": 3,
-      "choices": [{"id": "arrival", "name": "Arrival checklist", "price": 900},
-                  {"id": "intro", "name": "Adviser introduction (our time only)", "price": 4900}]}
+    "speed": {
+      "name": "Review speed",
+      "type": "one",
+      "required": true,
+      "choices": [
+        {
+          "id": "standard",
+          "name": "Standard: reviewed within 3 working days",
+          "price": 0,
+          "default": true
+        },
+        {
+          "id": "express",
+          "name": "Express: reviewed within 1 working day",
+          "price": 2900
+        }
+      ]
+    },
+    "travellers": {
+      "name": "Number of travellers",
+      "type": "one",
+      "required": true,
+      "choices": [
+        {
+          "id": "1",
+          "name": "1 traveller",
+          "price": 0,
+          "default": true
+        },
+        {
+          "id": "2",
+          "name": "2 travellers",
+          "price": 2500
+        },
+        {
+          "id": "3",
+          "name": "3 travellers",
+          "price": 5000
+        },
+        {
+          "id": "4",
+          "name": "4 travellers",
+          "price": 7500
+        }
+      ]
+    },
+    "extras": {
+      "name": "Extras",
+      "type": "many",
+      "required": false,
+      "max": 3,
+      "choices": [
+        {
+          "id": "arrival",
+          "name": "Arrival checklist",
+          "price": 900
+        },
+        {
+          "id": "intro",
+          "name": "Adviser introduction (our time only)",
+          "price": 4900
+        }
+      ]
+    }
   },
   "items": [
-    {"id": "tourist", "name": "Tourist plan", "category": "plans", "price": 3900, "options": ["speed", "travellers"],
-     "desc": "For a holiday of up to 60 days. We check your e-visa application, your documents and your health paperwork before you submit.",
-     "includes": ["E-visa application check", "Document checklist: passport, photo, itinerary, accommodation proof", "Yellow fever and Health Declaration reminders", "Arrival and safety briefing"],
-     "tags": ["popular"], "badge": "Most booked"},
-    {"id": "business", "name": "Business plan", "category": "plans", "price": 14900, "options": ["speed", "travellers"],
-     "desc": "For meetings and consultations. Adds an invitation-letter template, equipment and customs notes and a tax briefing.",
-     "includes": ["Everything in the Tourist plan", "Invitation-letter template for your Ghanaian host", "Equipment and customs briefing", "Tax overview for business visitors"]},
-    {"id": "property", "name": "Property investor plan", "category": "plans", "price": 49000, "options": ["speed"],
-     "desc": "For buying or leasing land and property. Leasehold guide, due-diligence checklist and a process for finding a licensed Ghanaian lawyer. Lawyer fees are extra and are not ours.",
-     "includes": ["Leasehold rules explained", "Due-diligence checklist", "Company-route overview", "Lawyer shortlist process"]},
-    {"id": "returnee", "name": "Diaspora and returnee plan", "category": "plans", "price": 24900, "options": ["speed"],
-     "desc": "For people moving home or back. Guidance on residence paperwork and the Non-Citizen Ghana Card where it applies.",
-     "includes": ["Residence and Ghana Card guidance", "Health and arrival checklist", "Where to confirm dual-nationality questions"]},
-    {"id": "student", "name": "Student plan", "category": "plans", "price": 9900, "options": ["speed"],
-     "desc": "For study in Ghana. We explain the route, prepare your document list and point you to the right authority.",
-     "includes": ["Route and document overview", "Health requirements", "Arrival checklist"]},
-    {"id": "remote", "name": "Remote worker plan", "category": "plans", "price": 19900, "options": ["speed"],
-     "desc": "Advice only. We explain what is and is not clear for working remotely, and where to get a licensed adviser's answer.",
-     "includes": ["Visa and work-rules overview", "Tax residence basics", "Power and connectivity tips"]},
-    {"id": "guide-evisa", "name": "E-visa walkthrough", "category": "guides", "price": 1500, "options": [],
-     "desc": "A step-by-step guide to the online e-visa: what to prepare, what to answer, what to avoid.",
-     "includes": ["Unlocked in My purchases straight away", "Official source links", "Dated facts"]},
-    {"id": "guide-arrival", "name": "First week in Ghana guide", "category": "guides", "price": 1200, "options": [],
-     "desc": "Money, SIM cards, taxis, power and safety for your first days.",
-     "includes": ["Unlocked in My purchases straight away", "Practical checklist"]},
-    {"id": "express-docs", "name": "Document review", "category": "addons", "price": 2900, "options": ["speed"],
-     "desc": "A one-off check of your documents against the current checklist, with a written list of fixes.",
-     "includes": ["Written feedback", "One follow-up question"]}
+    {
+      "id": "tourist",
+      "name": "Tourist plan",
+      "category": "plans",
+      "price": 3900,
+      "options": [
+        "speed",
+        "travellers"
+      ],
+      "desc": "For a holiday of up to 60 days. We check your e-visa application, your documents and your health paperwork before you submit.",
+      "includes": [
+        "E-visa application check",
+        "Document checklist for your trip",
+        "Yellow fever and Health Declaration reminders",
+        "Arrival and safety briefing",
+        "Official source links, dated 18.11.2026"
+      ],
+      "tags": [
+        "popular"
+      ],
+      "badge": "Most booked",
+      "features": [
+        "evisa",
+        "docs",
+        "health",
+        "arrival",
+        "sources"
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business plan",
+      "category": "plans",
+      "price": 14900,
+      "options": [
+        "speed",
+        "travellers"
+      ],
+      "desc": "For meetings and consultations. Adds an invitation-letter template, equipment and customs notes and a tax briefing.",
+      "includes": [
+        "E-visa application check",
+        "Document checklist for your trip",
+        "Yellow fever and Health Declaration reminders",
+        "Arrival and safety briefing",
+        "Invitation-letter template for your Ghanaian host",
+        "Equipment and customs briefing",
+        "Tax briefing",
+        "Official source links, dated 18.11.2026"
+      ],
+      "features": [
+        "evisa",
+        "docs",
+        "health",
+        "arrival",
+        "invite",
+        "customs",
+        "tax",
+        "sources"
+      ]
+    },
+    {
+      "id": "property",
+      "name": "Property investor plan",
+      "category": "plans",
+      "price": 49000,
+      "options": [
+        "speed"
+      ],
+      "desc": "For buying or leasing land and property. Leasehold guide, due-diligence checklist and a process for finding a licensed Ghanaian lawyer. Lawyer fees are extra and are not ours.",
+      "includes": [
+        "Leasehold rules and due-diligence checklist",
+        "Company-route overview",
+        "Lawyer shortlist process (lawyer fees are extra)",
+        "Official source links, dated 18.11.2026"
+      ],
+      "features": [
+        "land",
+        "company",
+        "lawyer",
+        "sources"
+      ]
+    },
+    {
+      "id": "returnee",
+      "name": "Diaspora and returnee plan",
+      "category": "plans",
+      "price": 24900,
+      "options": [
+        "speed"
+      ],
+      "desc": "For people moving home or back. Guidance on residence paperwork and the Non-Citizen Ghana Card where it applies.",
+      "includes": [
+        "Document checklist for your trip",
+        "Yellow fever and Health Declaration reminders",
+        "Arrival and safety briefing",
+        "Route and rules overview",
+        "Residence and Non-Citizen Ghana Card guidance",
+        "Official source links, dated 18.11.2026"
+      ],
+      "features": [
+        "docs",
+        "health",
+        "arrival",
+        "route",
+        "card",
+        "sources"
+      ]
+    },
+    {
+      "id": "student",
+      "name": "Student plan",
+      "category": "plans",
+      "price": 9900,
+      "options": [
+        "speed"
+      ],
+      "desc": "For study in Ghana. We explain the route, prepare your document list and point you to the right authority.",
+      "includes": [
+        "Document checklist for your trip",
+        "Yellow fever and Health Declaration reminders",
+        "Arrival and safety briefing",
+        "Route and rules overview",
+        "Official source links, dated 18.11.2026"
+      ],
+      "features": [
+        "docs",
+        "health",
+        "arrival",
+        "route",
+        "sources"
+      ]
+    },
+    {
+      "id": "remote",
+      "name": "Remote worker plan",
+      "category": "plans",
+      "price": 19900,
+      "options": [
+        "speed"
+      ],
+      "desc": "Advice only. We explain what is and is not clear for working remotely, and where to get a licensed adviser's answer.",
+      "includes": [
+        "Tax briefing",
+        "Route and rules overview",
+        "Power and connectivity tips",
+        "Official source links, dated 18.11.2026"
+      ],
+      "features": [
+        "tax",
+        "route",
+        "power",
+        "sources"
+      ]
+    },
+    {
+      "id": "guide-evisa",
+      "name": "E-visa walkthrough",
+      "category": "guides",
+      "price": 1500,
+      "options": [],
+      "desc": "A step-by-step guide to the online e-visa: what to prepare, what to answer, what to avoid.",
+      "includes": [
+        "Unlocked in My purchases straight away",
+        "Official source links",
+        "Dated facts"
+      ]
+    },
+    {
+      "id": "guide-arrival",
+      "name": "First week in Ghana guide",
+      "category": "guides",
+      "price": 1200,
+      "options": [],
+      "desc": "Money, SIM cards, taxis, power and safety for your first days.",
+      "includes": [
+        "Unlocked in My purchases straight away",
+        "Practical checklist"
+      ]
+    },
+    {
+      "id": "express-docs",
+      "name": "Document review",
+      "category": "addons",
+      "price": 2900,
+      "options": [
+        "speed"
+      ],
+      "desc": "A one-off check of your documents against the current checklist, with a written list of fixes.",
+      "includes": [
+        "Written feedback",
+        "One follow-up question"
+      ]
+    }
   ],
   "coupons": [
-    {"code": "WELCOME10", "name": "10% off your first order", "type": "percent", "value": 10, "appliesTo": "order", "maxDiscount": 5000, "firstOrderOnly": true}
+    {
+      "code": "WELCOME10",
+      "name": "10% off your first order",
+      "type": "percent",
+      "value": 10,
+      "appliesTo": "order",
+      "maxDiscount": 5000,
+      "firstOrderOnly": true
+    }
   ],
-  "giftCards": {"amounts": [2500, 5000, 10000], "min": 1000, "max": 50000,
-    "designs": [{"id": "safe", "name": "Safe travels", "line": "Help with the paperwork"}]},
-  "loyalty": {"pointsPerDollar": 1, "rewardAt": 500, "reward": "a free guide"}
+  "giftCards": {
+    "amounts": [
+      2500,
+      5000,
+      10000
+    ],
+    "min": 1000,
+    "max": 50000,
+    "designs": [
+      {
+        "id": "safe",
+        "name": "Safe travels",
+        "line": "Help with the paperwork"
+      }
+    ]
+  },
+  "loyalty": {
+    "pointsPerDollar": 1,
+    "rewardAt": 500,
+    "reward": "a free guide"
+  },
+  "features": [
+    {
+      "id": "evisa",
+      "name": "E-visa application check"
+    },
+    {
+      "id": "docs",
+      "name": "Document checklist for your trip"
+    },
+    {
+      "id": "health",
+      "name": "Yellow fever and Health Declaration reminders"
+    },
+    {
+      "id": "arrival",
+      "name": "Arrival and safety briefing"
+    },
+    {
+      "id": "invite",
+      "name": "Invitation-letter template for your Ghanaian host"
+    },
+    {
+      "id": "customs",
+      "name": "Equipment and customs briefing"
+    },
+    {
+      "id": "tax",
+      "name": "Tax briefing"
+    },
+    {
+      "id": "route",
+      "name": "Route and rules overview"
+    },
+    {
+      "id": "card",
+      "name": "Residence and Non-Citizen Ghana Card guidance"
+    },
+    {
+      "id": "land",
+      "name": "Leasehold rules and due-diligence checklist"
+    },
+    {
+      "id": "company",
+      "name": "Company-route overview"
+    },
+    {
+      "id": "lawyer",
+      "name": "Lawyer shortlist process (lawyer fees are extra)"
+    },
+    {
+      "id": "power",
+      "name": "Power and connectivity tips"
+    },
+    {
+      "id": "sources",
+      "name": "Official source links, dated 18.11.2026"
+    }
+  ]
 }
