@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My purchases | Come to Ghana</title>
+<meta name="description" content="Your paid Come to Ghana orders and the guides and walkthroughs you have unlocked.">
+<link rel="stylesheet" href="../css/tokens.css"> <link rel="stylesheet" href="../css/layout.css"> <link rel="stylesheet" href="../css/site.css"> <link rel="stylesheet" href="../css/shop/core.css"> <link rel="stylesheet" href="../css/shop/order.css">
+<script defer src="../js/nav.js"></script> <script defer src="../js/motion.js"></script> <script defer src="../js/app.js"></script> <script defer src="../js/shop/core.js"></script> <script defer src="../js/shop/cart.js"></script>
+<script defer src="../js/shop/account.js"></script>
+</head>
+<body>
+<main id="main" class="ord">
+  <header class="ord-hero">
+    <p class="ord-eyebrow">My purchases</p>
+    <h1>Everything you have bought, in one place.</h1>
+  </header>
+  <p class="shop-testmoney" role="note">Demo shop: test payments only. No real money moves.</p>
+  <div id="acc-app" aria-live="polite"><p class="ord-muted">Loading your purchases…</p></div>
+  <section class="ord-card ord-find" aria-labelledby="acc-find-h">
+    <h2 id="acc-find-h">Bought on another device?</h2>
+    <p class="ord-muted">Paste the link or order code from your confirmation page to add that order here.</p>
+    <form id="acc-find" class="ord-form" novalidate>
+      <div class="shop-field"><label for="acc-token">Order link or code</label><input id="acc-token" autocomplete="off" aria-describedby="acc-token-e"><span class="shop-error" id="acc-token-e" role="alert"></span></div>
+      <button class="shop-btn" type="submit">Add this order</button>
+    </form>
+  </section>
+  <p class="ord-muted ord-demo">Demo gate: purchases are remembered by this browser, so an unlocked guide is not real protection. Clearing your browser data removes the list; the order link still works.</p>
+  <noscript><p>My purchases needs JavaScript to look up your orders.</p></noscript>
+</main>
+</body>
+</html>

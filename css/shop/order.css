@@ -1,0 +1,43 @@
+/* Come to Ghana: order confirmation and My purchases. Tokens only. */
+.ord { padding-bottom: clamp(5rem, 12vw, 10rem); }
+.ord-hero { padding-block: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 4vw, 3rem); }
+.ord-hero h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); letter-spacing: -.03em; line-height: 1.02; margin: 0; max-width: 18ch; }
+.ord-hero h1 .ow { display: inline-block; animation: ord-rise .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 60ms); }
+.ord-eyebrow { font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .85rem; color: var(--accent, #0d6b3d); margin: 0 0 1rem; }
+@keyframes ord-rise { from { opacity: 0; transform: translateY(.5em); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+.ord-muted { color: var(--muted, #5c6e63); }
+.ord-grid { display: grid; gap: clamp(1.25rem, 3vw, 2rem); margin-top: 1.5rem; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 60rem) { .ord-grid { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; } }
+.ord-card { border-radius: 1.25rem; padding: clamp(1.25rem, 3vw, 2rem); background: var(--surface, #fff); box-shadow: 0 10px 30px rgba(0,0,0,.08); margin-bottom: 1.25rem; }
+.ord-card h2 { font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -.02em; margin: 0 0 1rem; }
+.ord-card h3 { font-size: 1.2rem; margin: 0 0 .4rem; }
+.ord-num { font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; margin: .25rem 0; font-variant-numeric: tabular-nums; color: var(--accent, #0d6b3d); }
+.ord-code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-weight: 700; letter-spacing: .06em; }
+.ord-steps { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: .75rem; }
+.ord-steps li { display: flex; gap: .8rem; align-items: center; opacity: .55; font-weight: 600; }
+.ord-steps li span { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; border: 1.5px solid currentColor; flex: none; font-size: .9rem; transition: background .3s, color .3s; }
+.ord-steps li.is-done { opacity: 1; }
+.ord-steps li.is-done span { background: var(--accent, #0d6b3d); border-color: var(--accent, #0d6b3d); color: var(--on-accent, #fff); }
+.ord-steps small { display: block; font-weight: 400; color: var(--muted, #5c6e63); }
+.ord-lines { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: .9rem; }
+.ord-lines li { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: .9rem; border-bottom: 1px solid var(--line, #ded9ca); }
+.ord-lines small { display: block; color: var(--muted, #5c6e63); }
+.ord-total { display: grid; gap: .35rem; margin: 0; }
+.ord-total div { display: flex; justify-content: space-between; gap: 1rem; }
+.ord-total .is-big { font-size: 1.4rem; font-weight: 800; margin-top: .4rem; }
+.ord-next { display: grid; gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
+.ord-next li { padding-left: 1rem; border-left: 4px solid var(--accent, #0d6b3d); }
+.ord-next ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+.ord-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; align-items: center; }
+.ord-banner { padding: 1rem 1.25rem; border-radius: 1rem; background: var(--surface-2, #f5f2ea); font-weight: 600; margin-block: 1rem; }
+.ord-banner.is-bad { background: #fde8e6; color: #7a1a12; }
+.ord-banner.is-good { background: #e3f4ea; color: #0b4a2a; }
+.ord-orders { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.ord-orders li { display: grid; gap: .5rem; }
+.ord-orders .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; align-items: baseline; }
+.ord-unlock { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); }
+.ord-unlock li { display: grid; gap: .6rem; align-content: start; }
+.ord-form .shop-field { max-width: 32rem; }
+.ord-demo { font-size: .9rem; max-width: 65ch; }
+.ord [hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .ord-hero h1 .ow { animation: none; } }
