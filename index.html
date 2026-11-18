@@ -23,22 +23,57 @@
   .h-h2 { font-size: clamp(2.4rem, 7vw, 5.5rem); letter-spacing: -.04em; line-height: 1; margin: 0 0 1.5rem; max-width: 16ch; }
   .h-sub { max-width: 58ch; font-size: clamp(1.1rem, 2vw, 1.35rem); margin: 0 0 2.5rem; }
 
+  .h-vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   /* plan chooser */
-  .h-tabs { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0 0 2rem; padding: 0; list-style: none; }
+  .h-tabs { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0 0 1.75rem; padding: 0; list-style: none; }
   .h-tab { font: inherit; font-weight: 700; padding: .7rem 1.25rem; border-radius: 999px; border: 1.5px solid currentColor; background: transparent; color: inherit; cursor: pointer; transition: background .3s, color .3s, transform .3s cubic-bezier(.2,.7,.2,1); }
   .h-tab:hover { transform: translateY(-2px); }
-  .h-tab[aria-selected="true"] { background: var(--accent, #0f6b3f); color: var(--on-accent, #fff); border-color: var(--accent, #0f6b3f); }
-  .h-tab:focus-visible { outline: 3px solid var(--accent, #0f6b3f); outline-offset: 3px; }
-  .h-panel { display: grid; gap: clamp(1.5rem, 4vw, 4rem); grid-template-columns: 1fr; align-items: start; padding: clamp(1.5rem, 4vw, 3.5rem); border-radius: 1.75rem; background: var(--surface, #fff); box-shadow: 0 30px 80px rgba(0,0,0,.12); }
-  @media (min-width: 52rem) { .h-panel { grid-template-columns: 1fr 1.1fr; } }
-  .h-panel h3 { font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -.03em; margin: 0 0 .75rem; }
-  .h-price { font-size: clamp(2.75rem, 7vw, 5rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; margin: 1rem 0 .25rem; }
+  .h-tab[aria-selected="true"] { background: var(--plan-feat-bg, #111); color: var(--plan-feat-ink, #fff); border-color: var(--plan-feat-border, #e6b84a); box-shadow: 0 0 0 2px var(--plan-feat-border, #e6b84a) inset; }
+  .h-tab:focus-visible, .h-seg label:focus-within { outline: 3px solid var(--accent, #0f6b3f); outline-offset: 3px; }
+  .h-panel { border: 1px solid var(--plan-border, transparent); display: grid; gap: clamp(1.75rem, 4vw, 4rem); grid-template-columns: 1fr; align-items: start; padding: clamp(1.5rem, 4vw, 3.5rem); border-radius: var(--plan-radius, 1.75rem); background: var(--plan-feat-bg, #0a1c12); color: var(--plan-feat-ink, #fff); box-shadow: var(--plan-feat-glow, 0 30px 80px rgba(0,0,0,.2)); }
+  @media (min-width: 56rem) { .h-panel { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); } }
+  .h-badge { display: inline-block; padding: var(--plan-badge-pad, .3rem .9rem); border-radius: 999px; background: var(--plan-badge-bg, #e6b84a); color: var(--plan-badge-ink, #1b1403); font-weight: 700; font-size: .85rem; margin-bottom: .9rem; }
+  .h-panel h3 { font-size: clamp(1.9rem, 4vw, 3rem); letter-spacing: -.03em; margin: 0 0 .75rem; }
+  .h-price { font-family: var(--plan-price-font, inherit); color: var(--plan-price-feat, #e6b84a); font-size: var(--plan-price-size, 4rem); font-weight: var(--plan-price-weight, 500); letter-spacing: var(--plan-price-track, -.04em); line-height: var(--plan-price-lh, 1); margin: 1.25rem 0 .25rem; font-variant-numeric: tabular-nums; }
   .h-price small { font-size: 1rem; font-weight: 600; letter-spacing: 0; opacity: .75; }
-  .h-incl { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
-  .h-incl li { padding: .9rem 1.1rem; border-radius: .9rem; background: var(--bg-alt, #f1f5f1); display: flex; gap: .75rem; font-size: 1.05rem; }
-  .h-incl li::before { content: "✓"; font-weight: 800; color: var(--accent, #0f6b3f); }
+  .h-opt { border: 0; padding: 0; margin: 1.25rem 0 0; }
+  .h-opt legend { font-weight: 700; margin-bottom: .5rem; padding: 0; }
+  .h-seg { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .h-seg label { cursor: pointer; }
+  .h-seg input { position: absolute; opacity: 0; pointer-events: none; }
+  .h-seg span { display: inline-block; padding: .55rem 1rem; border-radius: .8rem; border: 1.5px solid rgba(255,255,255,.35); font-weight: 600; transition: background .25s, border-color .25s; }
+  .h-seg input:checked + span { border-color: var(--plan-feat-border, #e6b84a); background: rgba(255,255,255,.1); }
+  .h-seg input:focus-visible + span { outline: 3px solid var(--plan-feat-border, #e6b84a); outline-offset: 2px; }
+  .h-total { margin: 1.25rem 0 0; font-size: 1.05rem; }
+  .h-total b { font-size: 1.5rem; font-variant-numeric: tabular-nums; }
   .h-panel .h-cta { margin-top: 1.5rem; }
+  .h-panel a:not(.shop-btn) { color: inherit; }
+  .h-panel .shop-btn { background: var(--plan-badge-bg, #e6b84a); color: var(--plan-badge-ink, #1b1403); }
+  .h-panel .shop-btn--ghost { background: transparent; color: inherit; border: 1.5px solid rgba(255,255,255,.55); }
   .h-note { font-size: .92rem; opacity: .8; margin-top: 1rem; max-width: 60ch; }
+  .h-col h4 { margin: 0 0 .75rem; font-size: 1.05rem; letter-spacing: .04em; text-transform: uppercase; font-family: var(--font-mono, ui-monospace, monospace); }
+  .h-incl, .h-excl { list-style: none; margin: 0 0 1.75rem; padding: 0; display: grid; gap: .6rem; }
+  .h-incl li, .h-excl li { padding: .8rem 1rem .8rem 2.6rem; border-radius: .9rem; position: relative; font-size: 1.02rem; }
+  .h-incl li { background: rgba(255,255,255,.07); }
+  .h-incl li::before { content: "✓"; position: absolute; left: 1rem; font-weight: 800; color: var(--plan-check-feat, #e6b84a); }
+  .h-excl li { border: 1.5px dashed rgba(255,255,255,.3); color: var(--plan-feat-soft, inherit); }
+  .h-excl li::before { content: "–"; position: absolute; left: 1.1rem; font-weight: 800; opacity: .6; }
+  .h-compare { margin-top: clamp(2.5rem, 6vw, 4.5rem); }
+  .h-compare h3 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); letter-spacing: -.02em; margin: 0 0 1rem; }
+  .h-scroll { overflow-x: auto; border-radius: 1.25rem; box-shadow: 0 10px 30px rgba(0,0,0,.08); background: var(--surface, #fff); }
+  .h-table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 46rem; font-size: .98rem; }
+  .h-table th, .h-table td { padding: .85rem 1rem; text-align: center; border-bottom: 1px solid var(--line, rgba(128,128,128,.25)); }
+  .h-table thead th { position: sticky; top: 0; background: var(--surface, #fff); font-size: 1rem; vertical-align: bottom; }
+  .h-table tbody th { text-align: left; font-weight: 500; position: sticky; left: 0; background: var(--surface, #fff); min-width: 14rem; }
+  .h-table thead th:first-child { position: sticky; left: 0; z-index: 2; text-align: left; }
+  .h-table .h-pr { display: block; font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; }
+  .h-table .on { color: var(--plan-check, #0f6b3f); font-weight: 800; }
+  .h-table .off { color: var(--plan-cross, #8a948d); }
+  .h-table tr.is-cur :is(th, td) { background: var(--accent-soft, rgba(15,107,63,.1)); }
+  .h-assure { list-style: none; margin: clamp(2.5rem, 6vw, 4rem) 0 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+  .h-assure li { padding: 1.25rem; border-radius: 1.1rem; border: 1.5px solid var(--line, rgba(128,128,128,.35)); }
+  .h-assure strong { display: block; margin-bottom: .35rem; }
+  .h-assure span { font-size: .95rem; opacity: .85; }
 
   /* trust */
   .h-facts { display: grid; gap: 2rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); margin: 0 0 3rem; }
@@ -111,12 +146,17 @@
 
   <section class="hv-section" id="plans" aria-labelledby="plans-h">
     <div class="hv-wrap">
-      <h2 id="plans-h" class="h-h2">Which traveller are you?</h2>
-      <p class="h-sub">Pick one and see exactly what you get. Our fee is separate from government fees, which the authority sets and you pay directly.</p>
+      <h2 id="plans-h" class="h-h2">Choose your plan</h2>
+      <p class="h-sub">Pick the kind of traveller you are. You will see exactly what you get, what is not included, and the price before you add anything to your cart.</p>
       <div id="chooser">
         <p><a class="shop-btn" href="pages/services.html">See every plan and price</a></p>
       </div>
-      <p class="h-note">Prices are from our price list, per traveller type at standard speed for one traveller; speed and extra travellers are chosen at the cart. Government fees are extra. Last checked 18.11.2026.</p>
+      <ul class="h-assure" aria-label="Good to know">
+        <li><strong>Test payments only</strong><span>This is a demo shop. No real money moves.</span></li>
+        <li><strong>Government fees are separate</strong><span>The authority sets them and you pay them directly, for example the e-visa.</span></li>
+        <li><strong>No promise of approval</strong><span>The authority decides. We help you apply correctly.</span></li>
+        <li><strong>Dated facts</strong><span>Every rule shows its as-of date. Last checked 18.11.2026.</span></li>
+      </ul>
     </div>
   </section>
 
