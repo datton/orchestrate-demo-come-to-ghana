@@ -29,19 +29,20 @@
     body.addEventListener('click', onBody);
   }
 
-  function makeButton() {
-    btn = document.createElement('button'); btn.type = 'button'; btn.className = 'cd-btn';
+  /* The header's [data-cart-open] link (from nav.js) is the cart button; only if a page has none by load do we add a floating one. */
+  function makeFallbackButton() {
+    if (document.querySelector('[data-cart-open]')) return;
+    btn = document.createElement('button'); btn.type = 'button'; btn.className = 'cd-btn cd-btn--float';
     btn.setAttribute('aria-haspopup', 'dialog'); btn.setAttribute('aria-controls', 'cart-drawer');
-    btn.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M3 4h2l2.4 11h9.7l2-8H6.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19" r="1.5" fill="currentColor"/><circle cx="16.5" cy="19" r="1.5" fill="currentColor"/></svg><span class="cd-label">Cart</span><span class="cd-badge" hidden>0</span>';
+    btn.innerHTML = 'Cart <span class="cd-badge" hidden>0</span>';
     badge = btn.querySelector('.cd-badge');
     btn.addEventListener('click', open);
-    var host = document.querySelector('.hv-header nav, .site-header nav, header nav, header') ;
-    if (host) { btn.classList.add('cd-btn--header'); host.appendChild(btn); }
-    else { btn.classList.add('cd-btn--float'); document.body.appendChild(btn); }
+    document.body.appendChild(btn); updateBadge();
   }
 
   function updateBadge() {
     var n = S.cartCount();
+    if (!badge) return;
     badge.textContent = n; badge.hidden = n === 0;
     btn.setAttribute('aria-label', 'Cart, ' + n + (n === 1 ? ' item' : ' items'));
   }
@@ -122,7 +123,12 @@
   }
 
   function init() {
-    build(); makeButton(); updateBadge();
+    build();
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest && e.target.closest('[data-cart-open]');
+      if (t && !e.defaultPrevented && !e.metaKey && !e.ctrlKey && !e.shiftKey) { e.preventDefault(); open(); }
+    });
+    if (document.readyState === 'complete') makeFallbackButton(); else window.addEventListener('load', makeFallbackButton);
     S.catalog().then(function (c) { window.__cd_cat = c; if (isOpen()) render(); }).catch(function () {});
     window.addEventListener('shop:cart', refresh);
     window.addEventListener('shop:cart-open', open);
