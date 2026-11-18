@@ -71,8 +71,8 @@
       '<p class="sv-vat">Our service fee. Government fees are extra.</p><p class="sv-desc">' + Shop.esc(it.desc) + '</p>' +
       optionsHtml(it, 'p-' + it.id) + '<button type="button" class="shop-btn sv-add">Add to cart</button></div>' +
       '<div class="sv-what"><h4>Included</h4><ul class="sv-check">' + inc.map(function (f) { return '<li>' + Shop.esc(f.name) + '</li>'; }).join('') + '<li>Standard or express review, your choice</li></ul>' +
-      '<h4>Not included</h4><ul class="sv-cross">' + out.filter(function (f) { return f.id !== 'sources'; }).map(function (f) { return '<li>' + Shop.esc(f.name) + '</li>'; }).join('') +
-      '<li>Government and authority fees, paid by you</li></ul></div></div>';
+      '<h4>Not included</h4><ul class="sv-cross">' + out.filter(function (f) { return f.id !== 'sources'; }).map(function (f) { return '<li><span class="sv-sr">Not included: </span>' + Shop.esc(f.name) + '</li>'; }).join('') +
+      '<li><span class="sv-sr">Not included: </span>Government and authority fees, paid by you</li></ul></div></div>';
     wire(panelEl.firstChild, it);
     try { history.replaceState(null, '', '#plans'); } catch (e) {}
   }
@@ -96,14 +96,14 @@
   function table(plans) {
     var t = document.getElementById('sv-table');
     var h = '<caption class="sv-sr">Which features each plan includes</caption><thead><tr><th scope="col">Feature</th>' +
-      plans.map(function (p) { return '<th scope="col">' + Shop.esc(p.name) + '<span class="sv-th-price">from ' + Shop.money(p.price) + '</span></th>'; }).join('') + '</tr></thead><tbody>';
+      plans.map(function (p) { return '<th scope="col"' + (p.badge ? ' class="is-feat"' : '') + '>' + Shop.esc(p.name) + '<span class="sv-th-price">from ' + Shop.money(p.price) + '</span></th>'; }).join('') + '</tr></thead><tbody>';
     cat.features.forEach(function (f) {
       h += '<tr><th scope="row">' + Shop.esc(f.name) + '</th>' + plans.map(function (p) {
         var y = (p.features || []).indexOf(f.id) >= 0;
-        return '<td>' + (y ? '<span class="sv-yes" aria-hidden="true">✓</span><span class="sv-sr">Included</span>' : '<span class="sv-no" aria-hidden="true">–</span><span class="sv-sr">Not included</span>') + '</td>';
+        return '<td' + (p.badge ? ' class="is-feat"' : '') + '>' + (y ? '<span class="sv-yes" aria-hidden="true">✓</span><span class="sv-sr">Included</span>' : '<span class="sv-no" aria-hidden="true">–</span><span class="sv-sr">Not included</span>') + '</td>';
       }).join('') + '</tr>';
     });
-    h += '<tr><th scope="row">Standard or express review</th>' + plans.map(function () { return '<td><span class="sv-yes" aria-hidden="true">✓</span><span class="sv-sr">Included</span></td>'; }).join('') + '</tr>';
+    h += '<tr><th scope="row">Standard or express review</th>' + plans.map(function (p) { return '<td' + (p.badge ? ' class="is-feat"' : '') + '><span class="sv-yes" aria-hidden="true">✓</span><span class="sv-sr">Included</span></td>'; }).join('') + '</tr>';
     t.innerHTML = h + '</tbody>';
   }
 
