@@ -17,14 +17,14 @@
   </header>
   <p class="shop-testmoney" role="note">Demo shop: test payments only. No real money moves.</p>
   <div id="acc-app" aria-live="polite"><p class="ord-muted">Loading your purchases…</p></div>
-  <section class="ord-card ord-find" aria-labelledby="acc-find-h">
+  <div class="ord-card ord-find" role="group" aria-labelledby="acc-find-h">
     <h2 id="acc-find-h">Bought on another device?</h2>
     <p class="ord-muted">Paste the link or order code from your confirmation page to add that order here.</p>
     <form id="acc-find" class="ord-form" novalidate>
       <div class="shop-field"><label for="acc-token">Order link or code</label><input id="acc-token" autocomplete="off" aria-describedby="acc-token-e"><span class="shop-error" id="acc-token-e" role="alert"></span></div>
       <button class="shop-btn" type="submit">Add this order</button>
     </form>
-  </section>
+  </div>
   <p class="ord-muted ord-demo">Demo gate: purchases are remembered by this browser, so an unlocked guide is not real protection. Clearing your browser data removes the list; the order link still works.</p>
   <noscript><p>My purchases needs JavaScript to look up your orders.</p></noscript>
 </main>
