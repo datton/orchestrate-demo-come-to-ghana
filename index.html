@@ -3,120 +3,179 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Come to Ghana | Help with your visit, move or investment</title>
-<meta name="description" content="Guidance and document preparation for visiting, working, studying, returning to or investing in Ghana. Plans from a clear price, plus step-by-step guides. Demo shop: test payments only.">
+<title>Come to Ghana | Arrive with everything in order</title>
+<meta name="description" content="Guidance and document preparation for visiting, working, studying, returning to or investing in Ghana. Pick your plan, see what is included, read dated facts with official sources. Demo shop: test payments only.">
 <link rel="stylesheet" href="css/tokens.css"> <link rel="stylesheet" href="css/layout.css"> <link rel="stylesheet" href="css/site.css"> <link rel="stylesheet" href="css/shop/core.css"> <link rel="stylesheet" href="css/shop/cart.css">
 <script defer src="js/nav.js"></script> <script defer src="js/motion.js"></script> <script defer src="js/app.js"></script> <script defer src="js/shop/core.js"></script> <script defer src="js/shop/cart.js"></script>
 <style>
   @view-transition { navigation: auto; }
-  .home-hero > .hv-wrap { min-height: calc(100svh - 12rem); display: flex; flex-direction: column; justify-content: center; }
-  .home-hero { min-height: 100svh; padding-block: clamp(6rem, 10vw, 8rem) 3rem; display: flex; flex-direction: column; justify-content: center; }
-  .home-hero h1 { font-size: clamp(3rem, 9vw, 7rem); letter-spacing: -.035em; line-height: .98; margin: 0 0 1.5rem; max-width: 15ch; }
-  .home-lede { max-width: 58ch; font-size: clamp(1.1rem, 2vw, 1.4rem); margin: 0 0 1.5rem; }
-  .home-kinetic { font-weight: 700; font-size: clamp(1.4rem, 3.4vw, 2.4rem); margin: 0 0 2rem; }
-  .home-cta { display: flex; flex-wrap: wrap; gap: .9rem; align-items: center; }
-  .home-note { font-size: .95rem; opacity: .85; margin-top: 1.5rem; max-width: 60ch; }
-  .home-h2 { font-size: clamp(2.2rem, 6vw, 4.5rem); letter-spacing: -.03em; line-height: 1.05; margin: 0 0 2rem; max-width: 18ch; }
-  .home-plans { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
-  .home-plans li { display: flex; flex-direction: column; gap: .6rem; }
-  .home-plans h3 { margin: 0; font-size: 1.5rem; }
-  .home-plans .home-from { font-size: 1.1rem; font-weight: 700; }
-  .home-plans ul { padding-left: 1.1rem; margin: 0; flex: 1; }
-  .home-trust { display: grid; gap: 2rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin-top: 2rem; }
-  .home-trust h3 { font-size: 1.35rem; margin: 0 0 .4rem; }
-  .home-stats { display: grid; gap: 2rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); }
-  .home-stat strong { display: block; overflow-wrap: anywhere; font-size: clamp(3.5rem, 8vw, 6rem); letter-spacing: -.03em; line-height: 1; color: var(--accent-bright, #f5c542); }
-  .home-ways { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
-  .home-ways a { display: block; padding: 1.25rem; border-radius: 1rem; border: 1.5px solid currentColor; text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: transform .3s cubic-bezier(.2,.7,.2,1); }
-  .home-ways a:hover { transform: translateY(-3px); }
-  .home-ways small { display: block; font-weight: 400; margin-top: .3rem; }
+  .h-dark { background: radial-gradient(70rem 36rem at 90% -10%, color-mix(in srgb, var(--accent-bright, #f5c542) 22%, transparent), transparent 60%), var(--bg-dark, #10231a); color: var(--on-dark, #f4f7f4); }
+  .h-hero { min-height: 100svh; display: flex; align-items: center; padding-block: clamp(6rem, 10vw, 9rem) clamp(3rem, 6vw, 5rem); }
+  .h-hero h1 { font-size: clamp(3.2rem, 10.5vw, 9rem); letter-spacing: -.045em; line-height: .94; margin: 0 0 clamp(1.5rem, 3vw, 2.5rem); max-width: 12ch; }
+  .h-eyebrow { font-family: var(--font-mono, ui-monospace, monospace); font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; opacity: .8; margin: 0 0 1.5rem; }
+  .h-lede { max-width: 56ch; font-size: clamp(1.15rem, 2.1vw, 1.5rem); line-height: 1.45; margin: 0 0 1.5rem; }
+  .h-kinetic { font-weight: 700; font-size: clamp(1.4rem, 3.4vw, 2.6rem); letter-spacing: -.02em; margin: 0 0 2.25rem; }
+  .h-kinetic .hv-rotate { color: var(--accent-bright, #f5c542); }
+  .h-cta { display: flex; flex-wrap: wrap; gap: .9rem; align-items: center; }
+  .h-dark .shop-btn--ghost { color: inherit; border-color: currentColor; }
+  .h-fine { font-size: .92rem; opacity: .8; max-width: 62ch; margin-top: 1.75rem; }
+  .h-h2 { font-size: clamp(2.4rem, 7vw, 5.5rem); letter-spacing: -.04em; line-height: 1; margin: 0 0 1.5rem; max-width: 16ch; }
+  .h-sub { max-width: 58ch; font-size: clamp(1.1rem, 2vw, 1.35rem); margin: 0 0 2.5rem; }
+
+  /* plan chooser */
+  .h-tabs { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0 0 2rem; padding: 0; list-style: none; }
+  .h-tab { font: inherit; font-weight: 700; padding: .7rem 1.25rem; border-radius: 999px; border: 1.5px solid currentColor; background: transparent; color: inherit; cursor: pointer; transition: background .3s, color .3s, transform .3s cubic-bezier(.2,.7,.2,1); }
+  .h-tab:hover { transform: translateY(-2px); }
+  .h-tab[aria-selected="true"] { background: var(--accent, #0f6b3f); color: var(--on-accent, #fff); border-color: var(--accent, #0f6b3f); }
+  .h-tab:focus-visible { outline: 3px solid var(--accent, #0f6b3f); outline-offset: 3px; }
+  .h-panel { display: grid; gap: clamp(1.5rem, 4vw, 4rem); grid-template-columns: 1fr; align-items: start; padding: clamp(1.5rem, 4vw, 3.5rem); border-radius: 1.75rem; background: var(--surface, #fff); box-shadow: 0 30px 80px rgba(0,0,0,.12); }
+  @media (min-width: 52rem) { .h-panel { grid-template-columns: 1fr 1.1fr; } }
+  .h-panel h3 { font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -.03em; margin: 0 0 .75rem; }
+  .h-price { font-size: clamp(2.75rem, 7vw, 5rem); font-weight: 800; letter-spacing: -.04em; line-height: 1; margin: 1rem 0 .25rem; }
+  .h-price small { font-size: 1rem; font-weight: 600; letter-spacing: 0; opacity: .75; }
+  .h-incl { list-style: none; margin: 0; padding: 0; display: grid; gap: .8rem; }
+  .h-incl li { padding: .9rem 1.1rem; border-radius: .9rem; background: var(--bg-alt, #f1f5f1); display: flex; gap: .75rem; font-size: 1.05rem; }
+  .h-incl li::before { content: "✓"; font-weight: 800; color: var(--accent, #0f6b3f); }
+  .h-panel .h-cta { margin-top: 1.5rem; }
+  .h-note { font-size: .92rem; opacity: .8; margin-top: 1rem; max-width: 60ch; }
+
+  /* trust */
+  .h-facts { display: grid; gap: 2rem 1.5rem; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); margin: 0 0 3rem; }
+  .h-fact strong { display: block; font-size: clamp(3.2rem, 8vw, 6rem); letter-spacing: -.04em; line-height: 1; color: var(--accent-bright, #f5c542); }
+  .h-fact span { display: block; margin-top: .4rem; max-width: 24ch; }
+  .h-trust { display: grid; gap: 1.5rem 2rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  .h-trust h3 { font-size: 1.3rem; margin: 0 0 .4rem; }
+  .h-trust a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+  .h-trust p { opacity: .9; }
+
+  /* every plan */
+  .h-every { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  .h-every div { padding: 1.5rem; border-radius: 1.25rem; background: var(--surface, #fff); box-shadow: 0 10px 30px rgba(0,0,0,.07); }
+  .h-every h3 { font-size: 1.25rem; margin: 0 0 .4rem; }
+
+  /* FAQ */
+  .h-faq details { border-top: 1.5px solid var(--line, rgba(128,128,128,.35)); padding-block: 1.25rem; }
+  .h-faq details:last-child { border-bottom: 1.5px solid var(--line, rgba(128,128,128,.35)); }
+  .h-faq summary { cursor: pointer; font-weight: 700; font-size: clamp(1.15rem, 2.4vw, 1.6rem); letter-spacing: -.01em; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+  .h-faq summary::-webkit-details-marker { display: none; }
+  .h-faq summary::after { content: "+"; font-size: 1.6rem; line-height: 1; transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+  .h-faq details[open] summary::after { transform: rotate(45deg); }
+  .h-faq summary:focus-visible { outline: 3px solid var(--accent, #0f6b3f); outline-offset: 4px; }
+  .h-faq p { margin: .9rem 0 0; max-width: 62ch; }
+  .h-final h2 { font-size: clamp(2.8rem, 9vw, 7.5rem); max-width: 13ch; }
   .scrolly-word { color: var(--accent-bright, #f5c542); }
 </style>
 </head>
 <body>
 <main id="main">
-  <section class="hv-section home-hero hv-full">
-<div class="hv-wrap">
-    <h1 data-words>Your way into Ghana, made clear</h1>
-    <p class="home-lede">Visas, health paperwork, residence, land and company rules: we explain what you need, check your documents and walk you through each step. Pick the plan for how you are going.</p>
-    <p class="home-kinetic">Help for <span class="hv-rotate" data-words="visitors|business travellers|property investors|returning families|students|remote workers">visitors</span></p>
-    <div class="home-cta">
-      <a class="shop-btn" href="pages/services.html">See plans and prices</a>
-      <a class="shop-btn shop-btn--ghost" href="pages/guides/index.html">Read the guides</a>
+
+  <section class="hv-section h-dark h-hero hv-full" aria-labelledby="h-title">
+    <div class="hv-wrap">
+      <p class="h-eyebrow">Guidance and document preparation for Ghana</p>
+      <h1 id="h-title" data-words>Arrive in Ghana with everything in order</h1>
+      <p class="h-lede">Visas, health paperwork, residence, land and company rules, explained plainly and checked against the official sources. Choose the plan for how you are going.</p>
+      <p class="h-kinetic">Made for <span class="hv-rotate" data-words="visitors|business travellers|property investors|returning families|students|remote workers">visitors</span></p>
+      <div class="h-cta">
+        <a class="shop-btn" href="#plans">Choose your plan</a>
+        <a class="shop-btn shop-btn--ghost" href="pages/guides/index.html">Read the guides</a>
+      </div>
+      <p class="h-fine">We are not a government body, embassy or licensed immigration practitioner, and we never promise approval. Demo shop: test payments only, no real money moves.</p>
     </div>
-    <p class="home-note">Guidance and document preparation only. We are not a government body, embassy or licensed immigration practitioner, and we never promise approval. Demo shop: test payments only, no real money moves.</p>
-  </div>
-</section>
+  </section>
 
   <div class="hv-marquee"><div class="hv-marquee-track">
     <span>E-visa</span><span>Health Declaration</span><span>Yellow fever</span><span>Ghana Card</span><span>Leasehold</span><span>Accra</span>
   </div></div>
 
-  <section class="hv-section">
-<div class="hv-wrap">
-    <p class="hv-statement">Ghana is welcoming, but the paperwork changes often, so we check the official sources and date every fact.</p>
-  </div>
-</section>
+  <section class="hv-section" aria-label="Our approach">
+    <div class="hv-wrap">
+      <p class="hv-statement">The rules for Ghana changed in 2026, so we read the official sources, date every fact and tell you plainly what is still unconfirmed.</p>
+    </div>
+  </section>
 
-  <section class="hv-section hv-dark hv-full" data-scrolly>
-<div class="hv-wrap">
-    <h2 class="home-h2">How it works</h2>
-    <div class="hv-scrolly">
-      <div class="hv-scrolly-word scrolly-word" aria-hidden="true">Choose</div>
-      <div class="hv-scrolly-steps">
-        <div data-step data-word="Choose">Pick the plan for your kind of trip, and add the number of travellers.</div>
-        <div data-step data-word="Prepare">Follow your checklist: passport, photo, itinerary, health paperwork.</div>
-        <div data-step data-word="Check">We review your documents against the current official requirements.</div>
-        <div data-step data-word="Go">Submit with confidence, and land in Accra knowing what to expect.</div>
+  <section class="hv-section h-dark hv-full" data-scrolly aria-labelledby="how-h">
+    <div class="hv-wrap">
+      <h2 id="how-h" class="h-h2">How it works</h2>
+      <div class="hv-scrolly">
+        <div class="hv-scrolly-word scrolly-word" aria-hidden="true">Choose</div>
+        <div class="hv-scrolly-steps">
+          <div data-step data-word="Choose">Pick the plan for your kind of trip and the number of travellers.</div>
+          <div data-step data-word="Prepare">Follow your checklist: passport, photo, itinerary, health paperwork.</div>
+          <div data-step data-word="Check">We review your documents against the current official requirements.</div>
+          <div data-step data-word="Go">Submit with confidence and land in Accra knowing what to expect.</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <section class="hv-section" aria-labelledby="plans-h">
-<div class="hv-wrap">
-    <h2 id="plans-h" class="home-h2">Plans and prices</h2>
-    <p class="home-lede">Our fee is separate from government fees, which the authority sets and you pay directly.</p>
-    <ul class="home-plans" id="home-plans">
-      <li class="shop-card"><h3>Tourist, Business, Property, Returnee, Student, Remote</h3><p>See every plan and what it includes.</p><a class="shop-btn" href="pages/services.html">Open the services page</a></li>
-    </ul>
-    <p class="home-note">Prices shown are from our price list and start at the standard speed for one traveller. Government fees are extra. Last checked 18.11.2026.</p>
-  </div>
-</section>
-
-  <section class="hv-section hv-dark hv-full" aria-labelledby="trust-h">
-<div class="hv-wrap">
-    <h2 id="trust-h" class="home-h2">Why trust us</h2>
-    <div class="home-trust">
-      <div><h3>Facts with dates</h3><p>Every rule carries an as-of date and a link to its official source.</p></div>
-      <div><h3>Honest limits</h3><p>We say plainly what is unconfirmed and when to ask the authority or a licensed Ghanaian adviser.</p></div>
-      <div><h3>Fees you can see</h3><p>Our fee and the government fee are shown separately, so nothing is hidden.</p></div>
-      <div><h3>No promises of approval</h3><p>The authority decides. We help you apply correctly.</p></div>
+  <section class="hv-section" id="plans" aria-labelledby="plans-h">
+    <div class="hv-wrap">
+      <h2 id="plans-h" class="h-h2">Which traveller are you?</h2>
+      <p class="h-sub">Pick one and see exactly what you get. Our fee is separate from government fees, which the authority sets and you pay directly.</p>
+      <div id="chooser">
+        <p><a class="shop-btn" href="pages/services.html">See every plan and price</a></p>
+      </div>
+      <p class="h-note">Prices are from our price list, per traveller type at standard speed for one traveller; speed and extra travellers are chosen at the cart. Government fees are extra. Last checked 18.11.2026.</p>
     </div>
-    <div class="home-stats" style="margin-top:3rem">
-      <div class="home-stat"><strong data-count="6">0</strong><span>traveller types covered</span></div>
-      <div class="home-stat"><strong data-count="60">0</strong><span>days a standard e-visa stay can last</span></div>
-      <div class="home-stat"><strong data-count="90">0</strong><span>days to enter after an e-visa is issued</span></div>
-      <div class="home-stat"><strong data-count="18">0</strong><span>November 2026: date every fact was last checked</span></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-  <section class="hv-section" aria-labelledby="guides-h">
-<div class="hv-wrap">
-    <h2 id="guides-h" class="home-h2">Start with a guide</h2>
-    <p class="home-lede">Step by step, with what to prepare, costs, timelines and official sources. Pick your situation.</p>
-    <ul class="home-ways">
-      <li><a href="pages/guides/tourist.html">Visiting Ghana<small>E-visa, health, safety</small></a></li>
-      <li><a href="pages/guides/business.html">Doing business<small>Letters, customs, tax</small></a></li>
-      <li><a href="pages/guides/property.html">Buying property<small>Leasehold and due diligence</small></a></li>
-      <li><a href="pages/guides/diaspora.html">Returning home<small>Residence and Ghana Card</small></a></li>
-      <li><a href="pages/guides/student.html">Studying<small>Route and documents</small></a></li>
-      <li><a href="pages/guides/remote-work.html">Working remotely<small>What is and is not clear</small></a></li>
-    </ul>
-    <p class="guide-note">General information, not legal, tax or immigration advice. Confirm with the authority or a licensed Ghanaian adviser.</p>
-  </div>
-</section>
+  <section class="hv-section" aria-labelledby="every-h" style="padding-top:0">
+    <div class="hv-wrap">
+      <h2 id="every-h" class="h-h2">In every plan</h2>
+      <div class="h-every">
+        <div><h3>Dated facts</h3><p>Every rule carries an as-of date, so you know how fresh it is.</p></div>
+        <div><h3>Official sources</h3><p>Each rule links to the authority that sets it.</p></div>
+        <div><h3>A clear checklist</h3><p>What to prepare, in the order to do it.</p></div>
+        <div><h3>Fees kept apart</h3><p>Our fee and government fees are always shown separately.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hv-section h-dark hv-full" aria-labelledby="trust-h">
+    <div class="hv-wrap">
+      <h2 id="trust-h" class="h-h2">Facts you can check</h2>
+      <p class="h-sub">From our fact sheet, checked on 18.11.2026. Confirm each with the authority before you rely on it.</p>
+      <div class="h-facts">
+        <div class="h-fact"><strong data-count="60">0</strong><span>days: the longest e-visa stay, set at the border</span></div>
+        <div class="h-fact"><strong data-count="90">0</strong><span>days to enter after your e-visa is issued</span></div>
+        <div class="h-fact"><strong data-count="6">0</strong><span>months of passport validity to plan for</span></div>
+        <div class="h-fact"><strong data-count="260" data-prefix="US$">0</strong><span>standard single-entry e-visa fee, paid to the authority</span></div>
+      </div>
+      <div class="h-trust">
+        <div><h3>E-visa</h3><p>Online since 25.05.2026 for business and tourism. Visa on arrival was replaced, so do not rely on it. <a href="https://evisa.immigration.gov.gh">evisa.immigration.gov.gh</a></p></div>
+        <div><h3>Health Declaration</h3><p>Mandatory since 12.11.2026, completed online before departure. <a href="https://ehds.ghs.gov.gh/declaration">ehds.ghs.gov.gh</a></p></div>
+        <div><h3>Yellow fever</h3><p>A certificate is required for all arrivals aged 9 months and over. Vaccinate at least 10 days before you travel.</p></div>
+        <div><h3>Where we say "check"</h3><p>Where a rule is unconfirmed we say so, and point you to the authority or a licensed Ghanaian adviser.</p></div>
+      </div>
+      <p class="h-fine">General information, not legal, tax or immigration advice. Government fees are set by the authority, paid separately, and can change. Last checked 18.11.2026.</p>
+    </div>
+  </section>
+
+  <section class="hv-section" aria-labelledby="faq-h">
+    <div class="hv-wrap">
+      <h2 id="faq-h" class="h-h2">Common questions</h2>
+      <div class="h-faq">
+        <details><summary>Do you guarantee my visa?</summary><p>No. The authority decides. We help you prepare a correct, complete application and tell you what to expect.</p></details>
+        <details><summary>Is your fee the visa fee?</summary><p>No. Our fee is for guidance and document preparation. Government fees, such as the e-visa, are set by the authority and paid separately.</p></details>
+        <details><summary>Can I still get a visa on arrival?</summary><p>The May 2026 reform replaced it. Do not rely on it, as you risk being denied boarding. Check the e-visa portal for your passport.</p></details>
+        <details><summary>How long should I allow for an e-visa?</summary><p>Sources differ, from 48 hours to 96 hours. We suggest allowing a week or more, and answering any request for information within 72 hours.</p></details>
+        <details><summary>Are you a law firm or immigration practitioner?</summary><p>No. We offer general information and document preparation. For land, company or tax questions, speak to a licensed Ghanaian adviser; our plans say where.</p></details>
+        <details><summary>Is this a real shop?</summary><p>It is a demonstration. Payments are test payments only and no real money moves.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="hv-section h-dark h-final hv-full" aria-labelledby="final-h">
+    <div class="hv-wrap">
+      <h2 id="final-h">Ready when you are</h2>
+      <p class="h-lede">Pick your plan, or start with a guide. Either way, you will know what to do next.</p>
+      <div class="h-cta">
+        <a class="shop-btn" href="#plans">Choose your plan</a>
+        <a class="shop-btn shop-btn--ghost" href="pages/guides/index.html">Start with a guide</a>
+      </div>
+      <p class="h-fine">Demo shop: test payments only. General information, not legal, tax or immigration advice.</p>
+    </div>
+  </section>
 </main>
 </body>
 </html>
