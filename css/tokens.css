@@ -1,25 +1,28 @@
-/* Come to Ghana: design tokens (Designer lane). Trustworthy and clear.
-   Palette: warm paper + deep ink-green neutrals, ONE accent (forest green); warm gold appears only as the accent on dark bands.
-   Contrast (AA, measured): --ink on --bg 15.5:1; --ink-soft 7.8:1; --muted 5.1:1; --on-accent on --accent 6.6:1;
-   --accent on --bg 6.2:1; --on-dark on --bg-dark 15.2:1; --accent-bright (gold) on --bg-dark 10.3:1.
+/* Come to Ghana: design tokens (Designer lane). Premium redesign: editorial, calm, confident.
+   Research notes (premium travel/concierge sites, via web search; opinions of agency write-ups, not measured): serif display over clean sans,
+   warm neutrals instead of stark white, generous space and few sections, slow smooth motion. No photos here, so type scale, tone and rules carry it.
+   Palette: warm ivory paper + near-black ink-green neutrals; forest green is the main accent, gold on dark bands and as thin rules,
+   Ghana red only as a tiny detail (one rule or dot). Never fill large areas with red or gold.
+   Contrast (AA, measured): --ink on --bg 16.6:1; --ink-soft 7.5:1; --muted on --bg 5.2:1, on --bg-alt 4.7:1; --on-accent on --accent 6.6:1;
+   --accent on --bg 6.0:1; --on-dark on --bg-dark 16.6:1; --accent-bright (gold) on --bg-dark 10.2:1. --gold is decorative on light, never body text.
    Type: system fonts only; serif display for authority, sans body for clarity; clamp() scale, tight tracking on large type.
-   Motion: one ease, 400-900 ms, 60 ms stagger; animate transform/opacity/filter only. */
+   Motion: one ease (--ease-slow for big reveals), 400-900 ms, 60 ms stagger; animate transform/opacity/filter only. */
 :root {
   color-scheme: light;
 
   /* Palette: light */
-  --bg: #faf8f3;
-  --bg-alt: #f0ece1;
+  --bg: #f8f4ea;
+  --bg-alt: #eee7d6;
   --surface: #ffffff;
-  --surface-2: #f5f2ea;
-  --ink: #10231a;
+  --surface-2: #f3eddd;
+  --ink: #0c1812;
   --ink-soft: #3f5348;
-  --muted: #5c6e63;
-  --line: #ded9ca;
+  --muted: #52655a;
+  --line: #dcd2ba;
 
   /* Palette: dark bands */
-  --bg-dark: #0a1f16;
-  --bg-dark-2: #123325;
+  --bg-dark: #07140d;
+  --bg-dark-2: #0f2a1b;
   --on-dark: #f3f1e8;
   --on-dark-soft: #a9bfb1;
   --line-dark: #22432f;
@@ -27,7 +30,10 @@
   /* Accent (one) */
   --accent: #0d6b3d;
   --accent-2: #14884f;          /* hover / gradient partner */
-  --accent-bright: #f2c14e;     /* accent on dark backgrounds */
+  --accent-bright: #e6b84a;     /* gold: accent on dark backgrounds */
+  --gold: #b88a1e;              /* gold for rules, numerals and large decorative type on light (not body text) */
+  --gold-soft: #f1e3b8;
+  --red: #c8202f;               /* Ghana red: tiny details only (a rule, a dot), never large fills */
   --accent-soft: #dcefe2;
   --on-accent: #ffffff;
 
@@ -38,14 +44,16 @@
   --danger-soft: #fbe6e3;
 
   /* Gradients and glow (CSS only) */
-  --grad-accent: linear-gradient(120deg, #0d6b3d 0%, #1f9a5c 55%, #f2c14e 100%);
-  --grad-text: linear-gradient(100deg, #0d6b3d 0%, #2a9d62 50%, #0d6b3d 100%);
-  --grad-dark: radial-gradient(120% 80% at 80% 0%, #17482f 0%, #0a1f16 60%);
-  --glow: 0 0 80px rgba(242, 193, 78, .25);
+  --grad-accent: linear-gradient(120deg, #0d6b3d 0%, #1f9a5c 50%, #e6b84a 100%);
+  --grad-text: linear-gradient(100deg, #0d6b3d 0%, #b88a1e 50%, #0d6b3d 100%);
+  --grad-dark: radial-gradient(120% 80% at 80% 0%, #12402a 0%, #07140d 62%);
+  --glow: 0 0 80px rgba(230, 184, 74, .28);
 
   /* Type */
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-display: ui-serif, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --display-weight: 500;        /* light-medium serif looks editorial; avoid bold */
+  --label-size: .75rem;         /* small caps labels: uppercase, --track-label, weight 600 */
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --fs-xs: .8125rem;
@@ -55,14 +63,14 @@
   --fs-xl: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
   --fs-2xl: clamp(2rem, 1.4rem + 3vw, 3.75rem);
   --fs-3xl: clamp(2.75rem, 1.6rem + 6vw, 6rem);
-  --fs-hero: clamp(3.25rem, 1.5rem + 9vw, 8rem);
-  --fs-giant: clamp(5rem, 2rem + 18vw, 16rem);      /* marquee, scrollytelling word */
+  --fs-hero: clamp(3.5rem, 1.5rem + 10vw, 9rem);
+  --fs-giant: clamp(5.5rem, 2rem + 20vw, 18rem);      /* marquee, scrollytelling word */
   --fs-step: clamp(1.5rem, 1.1rem + 1.6vw, 2.5rem); /* scrollytelling step text */
 
-  --lh-tight: .95;
+  --lh-tight: .92;
   --lh-snug: 1.15;
   --lh-body: 1.6;
-  --track-display: -.04em;
+  --track-display: -.045em;
   --track-heading: -.025em;
   --track-label: .12em;
   --measure: 65ch;
@@ -84,20 +92,24 @@
   --radius: 1rem;
   --radius-lg: 1.75rem;
   --radius-pill: 999px;
-  --shadow-sm: 0 1px 2px rgba(16, 35, 26, .06), 0 2px 8px rgba(16, 35, 26, .05);
-  --shadow: 0 8px 30px rgba(16, 35, 26, .09);
-  --shadow-lg: 0 24px 60px rgba(16, 35, 26, .16);
+  --shadow-sm: 0 1px 2px rgba(12, 24, 18, .06), 0 2px 8px rgba(12, 24, 18, .05);
+  --shadow: 0 8px 30px rgba(12, 24, 18, .09);
+  --shadow-lg: 0 30px 80px rgba(12, 24, 18, .2);
+  --shadow-gold: 0 10px 40px rgba(184, 138, 30, .22);
+  --rule-gold: linear-gradient(90deg, #b88a1e, #e6b84a 60%, transparent);
+  --kente: repeating-linear-gradient(90deg, #e6b84a 0 14px, #0d6b3d 14px 28px, #c8202f 28px 42px, #07140d 42px 56px); /* 4px strip, one place only */
   --focus: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
 
   /* Motion */
   --ease: cubic-bezier(.2, .7, .2, 1);
+  --ease-slow: cubic-bezier(.16, .84, .24, 1);
   --dur-fast: 400ms;
-  --dur: 650ms;
+  --dur: 750ms;
   --dur-slow: 900ms;
   --stagger: 60ms;
   --rise: 1.25rem;              /* reveal travel distance */
   --blur-in: 8px;               /* reveal start blur */
-  --marquee-speed: 60s;
+  --marquee-speed: 80s;
 }
 
 @media (prefers-reduced-motion: reduce) {
