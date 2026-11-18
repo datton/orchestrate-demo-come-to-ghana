@@ -17,20 +17,20 @@
   function render(orders) {
     var paid = orders.filter(isPaid);
     if (!paid.length) {
-      app.innerHTML = '<section class="ord-card"><h2>No purchases yet</h2><p>Once you have paid for a plan or a guide it appears here, and guides unlock straight away.</p>' +
-        '<div class="ord-actions"><a class="shop-btn" href="' + S.link('pages/services.html') + '">See the plans</a><a class="shop-btn shop-btn--ghost" href="' + S.link('pages/guides/index.html') + '">Browse free guide pages</a></div></section>';
+      app.innerHTML = '<div class="shop-card"><h2>No purchases yet</h2><p>Once you have paid for a plan or a guide it appears here, and guides unlock straight away.</p>' +
+        '<div class="ord-actions"><a class="shop-btn" href="' + S.link('pages/services.html') + '">See the plans</a><a class="shop-btn shop-btn--ghost" href="' + S.link('pages/guides/index.html') + '">Browse free guide pages</a></div></div>';
       return;
     }
     var unlocked = {}, html = '';
     paid.forEach(function (o) { o.lines.forEach(function (l) { if (GUIDES[l.item] && !unlocked[l.item]) unlocked[l.item] = o; }); });
     var keys = Object.keys(unlocked);
     if (keys.length) {
-      html += '<section class="ord-card" aria-labelledby="acc-un"><h2 id="acc-un">Your unlocked guides</h2><ul class="ord-unlock">' + keys.map(function (k) {
+      html += '<section aria-labelledby="acc-un"><h2 id="acc-un">Your unlocked guides</h2><ul class="ord-unlock">' + keys.map(function (k) {
         var g = GUIDES[k];
-        return '<li><h3>' + esc(g.name) + '</h3><p class="ord-muted">Bought ' + fmt(unlocked[k].placedAt) + '</p><a class="shop-btn" href="' + S.link('pages/guides/' + g.slug + '.html') + '">Open the guide</a></li>';
+        return '<li class="shop-card"><h3>' + esc(g.name) + '</h3><p class="ord-muted">Bought ' + fmt(unlocked[k].placedAt) + '</p><a class="shop-btn" href="' + S.link('pages/guides/' + g.slug + '.html') + '">Open the guide</a></li>';
       }).join('') + '</ul></section>';
     }
-    html += '<section class="ord-card" aria-labelledby="acc-or"><h2 id="acc-or">Your orders</h2><ul class="ord-orders">' + paid.map(function (o) {
+    html += '<section class="ord-list-h" aria-labelledby="acc-or"><h2 id="acc-or">Your orders</h2><ul class="ord-orders">' + paid.map(function (o) {
       return '<li><div class="row"><h3>Order ' + esc(o.number) + '</h3><span class="shop-chip">' + esc(o.statusLabel || o.status) + '</span></div>' +
         '<p>' + o.lines.map(function (l) { return esc(l.name) + (l.qty > 1 ? ' × ' + l.qty : ''); }).join(', ') + '</p>' +
         '<p class="ord-muted">' + fmt(o.placedAt) + ' · <span class="shop-price">' + S.money(o.total, o.currency) + '</span></p>' +

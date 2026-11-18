@@ -11,12 +11,20 @@
 </head>
 <body>
 <main id="main" class="ord">
-  <header class="ord-hero">
-    <p class="ord-eyebrow" id="ord-eyebrow">Your order</p>
+  <header class="band band--dark ord-hero">
+    <p class="eyebrow" id="ord-eyebrow">Your order</p>
     <h1 id="ord-title">Checking your order</h1>
+    <div id="ord-hero-extra" hidden>
+      <p class="ord-num-label">Order number</p>
+      <p class="ord-num" id="ord-num"></p>
+      <p class="ord-code-line">Order code <span class="ord-code" id="ord-code"></span>. Keep this page: the link is your order.</p>
+      <ol class="ord-steps" id="ord-steps" aria-label="Order progress"></ol>
+    </div>
   </header>
-  <p class="shop-testmoney" role="note">Demo shop: test payments only. No real money moves.</p>
-  <div id="ord-app" aria-live="polite"><p class="ord-muted">Loading your order…</p></div>
+  <section class="band ord-body" aria-label="Order details">
+    <p class="shop-testmoney" role="note">Demo shop: test payments only. No real money moves.</p>
+    <div id="ord-app" aria-live="polite"><p class="ord-muted">Loading your order…</p></div>
+  </section>
   <noscript><p>The order page needs JavaScript to load your order. Your receipt is also kept in My purchases.</p></noscript>
 </main>
 </body>

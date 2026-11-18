@@ -63,15 +63,22 @@
 
   function stages(o) {
     var STAGES = [['paid', 'Payment received'], ['making', 'Being prepared'], ['ready', 'Ready'], ['collected', 'Delivered']];
-    var at = {}; (o.steps || []).forEach(function (s) { at[s.id] = s; });
-    return STAGES.map(function (s, i) {
-      var st = at[s[0]] || {}, done = !!st.at;
-      return '<li class="' + (done ? 'is-done' : '') + '"><span aria-hidden="true">' + (done ? '✓' : i + 1) + '</span><div>' + esc(s[1]) + (done ? '<small>' + fmt(st.at) + '</small>' : '') + '<span class="ord-sr">' + (done ? ' done' : ' waiting') + '</span></div></li>';
+    var at = {}; (o.steps || []).forEach(function (x) { at[x.id] = x; });
+    return STAGES.map(function (st) {
+      var d = at[st[0]] || {}, done = !!d.at;
+      return '<li class="' + (done ? 'is-done' : '') + '"><b>' + esc(st[1]) + '</b><small>' + (done ? fmt(d.at) : 'Waiting') + '</small></li>';
     }).join('');
+  }
+  function hero(o, on) {
+    var x = document.getElementById('ord-hero-extra'); x.hidden = !on;
+    if (!on) return;
+    document.getElementById('ord-num').textContent = o.number;
+    document.getElementById('ord-code').textContent = o.code;
+    document.getElementById('ord-steps').innerHTML = stages(o);
   }
 
   function render(o) {
-    order = o;
+    order = o; hero(o, false);
     var paid = o.status !== 'pending' && o.status !== 'cancelled' && o.status !== 'refunded';
     if (o.status === 'cancelled' || o.status === 'refunded') {
       eyebrow.textContent = 'Order ' + o.number; headline('This order was cancelled.');
@@ -83,9 +90,9 @@
       app.innerHTML = '<div class="ord-banner" role="status">We have not seen the test payment yet. This page checks again every few seconds.</div>';
       return;
     }
-    S.addOrder(o.token);
+    S.addOrder(o.token); hero(o, true);
     eyebrow.textContent = 'Thank you, ' + (o.firstName || o.name);
-    if (!title.getAttribute('data-done')) { headline('Your order is in. Welcome to the plan.'); title.setAttribute('data-done', '1'); }
+    if (!title.getAttribute('data-done')) { headline('Your order is in. Welcome.'); title.setAttribute('data-done', '1'); }
     var lines = o.lines.map(function (l) { return '<li><div>' + esc(l.name) + (l.qty > 1 ? ' × ' + l.qty : '') + (optNames(l) ? '<small>' + esc(optNames(l)) + '</small>' : '') + '</div><strong class="shop-price">' + S.money(l.total, o.currency) + '</strong></li>'; }).join('');
     var tot = '<div><dt>Subtotal</dt><dd>' + S.money(o.subtotal, o.currency) + '</dd></div>' +
       (o.discount ? '<div><dt>' + esc(o.discount.name) + '</dt><dd>-' + S.money(o.discount.amount, o.currency) + '</dd></div>' : '') +
@@ -93,14 +100,12 @@
       '<div class="is-big"><dt>Total paid</dt><dd>' + S.money(o.total, o.currency) + '</dd></div>';
     var cancel = o.cancellable ? '<button type="button" class="shop-btn shop-btn--ghost" id="ord-cancel">Cancel this order</button><span class="ord-muted" id="ord-cd"></span>' : '';
     app.innerHTML = '<div class="ord-grid"><div>' +
-      '<section class="ord-card" aria-labelledby="ord-n"><p class="ord-muted" id="ord-n">Order number</p><p class="ord-num">' + esc(o.number) + '</p><p>Order code <span class="ord-code">' + esc(o.code) + '</span>. Keep this page: the link is your order.</p>' +
-      '<ol class="ord-steps" aria-label="Order progress">' + stages(o) + '</ol></section>' +
-      '<section class="ord-card" aria-labelledby="ord-nx"><h2 id="ord-nx">What happens next</h2><ul class="ord-next">' + nextSteps(o) + '</ul>' +
-      '<p class="ord-muted">Our service fee is separate from government fees (visa, permits, Ghana Card). We never promise approval: the authority decides. General information, not legal, tax or immigration advice.</p></section>' +
-      '</div><div><section class="ord-card" aria-labelledby="ord-b"><h2 id="ord-b">What you bought</h2><ul class="ord-lines">' + lines + '</ul><dl class="ord-total">' + tot + '</dl>' +
+      '<h2 id="ord-nx">What happens next</h2><ul class="ord-next" aria-labelledby="ord-nx">' + nextSteps(o) + '</ul>' +
+      '<p class="guide-note ord-note">Our service fee is separate from government fees (visa, permits, Ghana Card). We never promise approval: the authority decides. General information, not legal, tax or immigration advice.</p>' +
+      '</div><aside class="shop-card ord-receipt" aria-labelledby="ord-b"><h2 id="ord-b">Your receipt</h2><ul class="ord-lines">' + lines + '</ul><dl class="ord-total">' + tot + '</dl>' +
       '<p class="ord-muted">' + (o.payment && o.payment.card ? 'Paid with ' + esc(o.payment.card) + ' (test payment). ' : 'Test payment. ') + 'Placed ' + fmt(o.placedAt) + '.</p>' +
       '<div class="ord-actions"><button type="button" class="shop-btn" id="ord-dl">Download receipt (.txt)</button><a class="shop-btn shop-btn--ghost" href="' + S.link('pages/account.html') + '">My purchases</a>' + cancel + '</div>' +
-      '<div class="ord-banner" id="ord-msg" role="status" hidden></div></section></div></div>';
+      '<div class="ord-banner" id="ord-msg" role="status" hidden></div></aside></div>';
     document.getElementById('ord-dl').addEventListener('click', download);
     var c = document.getElementById('ord-cancel');
     if (c) c.addEventListener('click', function () {
@@ -115,7 +120,7 @@
   function load() {
     S.api('orders/' + encodeURIComponent(token)).then(function (r) { render(r.order || r); }).catch(function (e) {
       stop(); eyebrow.textContent = 'Your order'; headline('We could not find that order.');
-      app.innerHTML = '<div class="ord-banner is-bad" role="alert">' + esc(e.message) + '</div><div class="ord-actions"><a class="shop-btn" href="' + S.link('pages/account.html') + '">Go to My purchases</a></div>';
+      hero(null, false); app.innerHTML = '<div class="ord-banner is-bad" role="alert">' + esc(e.message) + '</div><div class="ord-actions"><a class="shop-btn" href="' + S.link('pages/account.html') + '">Go to My purchases</a></div>';
     });
   }
   if (!token) {
