@@ -14,6 +14,7 @@
   var filters = document.getElementById('guide-filters');
   var count = document.getElementById('guide-count');
   var active = 'All', plans = {};
+  var ALIAS = { diaspora: 'returnee', 'remote-work': 'remote' };
 
   function esc(s) { return window.Shop ? Shop.esc(s) : String(s); }
 
@@ -48,11 +49,11 @@
 
   render();
 
-  // Plans come from the catalog; an item matches a guide when its id or "guide" field names the guide slug.
+  // Plans come from the catalog; an item matches a guide when its id or "guide" field names the guide slug, or the id is the guide's alias (ALIAS).
   if (window.Shop) Shop.catalog().then(function (c) {
     (c.items || []).forEach(function (it) {
       GUIDES.forEach(function (g) {
-        if (!plans[g.slug] && (it.guide === g.slug || (it.id || '').indexOf(g.slug) !== -1)) plans[g.slug] = it;
+        if (!plans[g.slug] && (it.guide === g.slug || it.id === (ALIAS[g.slug] || g.slug) || (it.id || '').indexOf(g.slug) !== -1)) plans[g.slug] = it;
       });
     });
     render();
