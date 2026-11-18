@@ -132,3 +132,62 @@
   background-clip: text;
   color: transparent;
 }
+
+/* Plan cards (pricing section). Pattern from pricing-page write-ups (opinions, not measured): ONE featured plan,
+   a short badge, the price as the largest thing on the card, quiet "from" and "per" text, a clear included/not-included list.
+   Standard card: white surface, hairline border. Featured card: --bg-dark with gold rule, gold badge, lifted shadow.
+   Contrast: --plan-badge-ink on --accent-bright 9.9:1; --plan-tag-ink on --plan-tag-bg 8.1:1; --plan-feat-ink on --plan-feat-bg 16.6:1.
+   --plan-cross (3.1:1) is a decorative marker only: the row text stays --muted (6.2:1 on white) and says "Not included". */
+:root {
+  --plan-bg: var(--surface);
+  --plan-border: var(--line);
+  --plan-radius: var(--radius-lg);
+  --plan-pad: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  --plan-gap: clamp(1rem, .5rem + 2vw, 2rem);
+  --plan-shadow: var(--shadow-sm);
+  --plan-shadow-hover: var(--shadow-lg);
+  --plan-lift: -6px;                         /* hover translateY */
+
+  /* Featured (recommended) plan */
+  --plan-feat-bg: var(--bg-dark);
+  --plan-feat-ink: var(--on-dark);
+  --plan-feat-soft: var(--on-dark-soft);
+  --plan-feat-border: var(--accent-bright);
+  --plan-feat-glow: var(--glow);
+  --plan-feat-scale: 1.03;                   /* desktop only; keep 1 on phone */
+
+  /* Badges: pill labels ("Most chosen", "Express", "Included") */
+  --plan-badge-bg: var(--accent-bright);
+  --plan-badge-ink: #1b1403;
+  --plan-badge-size: var(--label-size);
+  --plan-badge-pad: .35em .9em;
+  --plan-tag-bg: var(--accent-soft);          /* quiet tag on light cards */
+  --plan-tag-ink: #0a4f2c;
+
+  /* Price type: big serif numerals, small quiet currency/"from"/"per" */
+  --plan-price-size: clamp(3rem, 2rem + 4vw, 5.25rem);
+  --plan-price-weight: 500;
+  --plan-price-track: -.05em;
+  --plan-price-lh: .9;
+  --plan-price-font: var(--font-display);
+  --plan-price-feat: var(--accent-bright);   /* featured price colour */
+  --plan-price-note-size: var(--fs-xs);      /* "from", "per traveller", "gov fees separate" */
+  --plan-price-note: var(--muted);
+
+  /* Checklist */
+  --plan-check: var(--accent);                /* included tick */
+  --plan-check-feat: var(--accent-bright);
+  --plan-cross: #8a948d;                       /* not included: muted, never red */
+  --plan-row-gap: .7rem;
+  --plan-divider: var(--line);
+
+  /* Comparison table */
+  --table-head-bg: var(--bg-alt);
+  --table-row-alt: var(--surface-2);
+  --table-feat-col: var(--accent-soft);       /* tint behind the featured plan's column */
+  --table-line: var(--line);
+}
+
+@media (max-width: 40rem) {
+  :root { --plan-feat-scale: 1; --plan-lift: 0px; }
+}
