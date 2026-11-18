@@ -8,6 +8,13 @@
 <link rel="stylesheet" href="../../css/tokens.css"> <link rel="stylesheet" href="../../css/layout.css"> <link rel="stylesheet" href="../../css/site.css"> <link rel="stylesheet" href="../../css/shop/core.css">
 <script defer src="../../js/nav.js"></script> <script defer src="../../js/motion.js"></script> <script defer src="../../js/app.js"></script> <script defer src="../../js/shop/core.js"></script> <script defer src="../../js/shop/cart.js"></script>
 <style>
+  main > .band { padding: clamp(5rem, 12vw, 10rem) var(--gutter, clamp(1.25rem, 5vw, 4rem)); }
+  main > .band > * { max-width: var(--max-w, 72rem); margin-inline: auto; }
+  main > .band--dark { background: var(--bg-dark, #0d1f17); color: var(--on-dark, #fff); }
+  main > .band--alt { background: var(--bg-alt, #f3efe7); }
+  .band--dark a { color: var(--accent-bright, inherit); }
+  .band--dark .gd-steps li::before { color: var(--accent-bright, #4ade80); }
+  .gd-hero h2, .band h2 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -.02em; margin: 0 0 1rem; }
   .gd-hero h1 { font-size: clamp(2.75rem, 8vw, 6.5rem); letter-spacing: -.03em; line-height: 1; margin: 0 0 1.25rem; }
   .gd-hero p { max-width: 60ch; font-size: clamp(1.1rem, 2vw, 1.4rem); }
   .gd-steps { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: clamp(1.5rem, 4vw, 3rem); counter-reset: s; }
