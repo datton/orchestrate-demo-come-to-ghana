@@ -4,3 +4,5 @@ html { scroll-behavior: smooth; }
 body { margin: 0; font-family: var(--font-body, system-ui, -apple-system, "Segoe UI", sans-serif); line-height: 1.6; }
 .guide-note { font-size: .9rem; padding: .9rem 1.1rem; border-radius: .9rem; background: rgba(0,0,0,.05); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Bands (guide pages, services, home): full-bleed background, content kept to the page width with a gutter. */
+.band { padding-inline: max(var(--hv-gutter, 1.25rem), calc((100% - var(--hv-max, 76rem)) / 2 + var(--hv-gutter, 1.25rem))); }
