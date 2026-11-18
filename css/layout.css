@@ -4,7 +4,12 @@
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--hv-header-h) + 1rem); }
 *, *::before, *::after { box-sizing: border-box; }
 img, svg, video { max-width: 100%; height: auto; }
-main { display: block; min-height: 60svh; }
+main { display: block; min-height: 60svh; --hv-side: max(var(--hv-gutter), calc((100% - var(--hv-max)) / 2 + var(--hv-gutter))); }
+/* Shared container: every top-level block of a page gets side margins and centres at the max width.
+   Sections and headers keep full-bleed backgrounds and pad their content; other blocks are inset by margin. */
+main > :is(section, header, article) { padding-inline: var(--hv-side) !important; }
+main > :not(section, header, article, .hv-marquee, script, style, [hidden]) { margin-inline: var(--hv-side) !important; }
+main > :is(section, header, article) > .hv-wrap { padding-inline: 0; max-width: none; }
 h1, h2, h3 { text-wrap: balance; line-height: 1.1; }
 .hv-wrap { max-width: var(--hv-max); margin-inline: auto; padding-inline: var(--hv-gutter); }
 .hv-section { padding-block: clamp(5rem, 12vw, 10rem); }
