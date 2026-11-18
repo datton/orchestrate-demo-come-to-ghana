@@ -1,8 +1,30 @@
-/* Come to Ghana: site-wide base. Tokens in tokens.css, layout in layout.css, shop parts in css/shop/. */
+/* Come to Ghana: site-wide base and premium page rhythm. Tokens: tokens.css. Layout/shell: layout.css. Shop parts: css/shop/. */
 @view-transition { navigation: auto; }
-html { scroll-behavior: smooth; }
-body { margin: 0; font-family: var(--font-body, system-ui, -apple-system, "Segoe UI", sans-serif); line-height: 1.6; }
-.guide-note { font-size: .9rem; padding: .9rem 1.1rem; border-radius: .9rem; background: rgba(0,0,0,.05); }
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-/* Bands (guide pages, services, home): full-bleed background, content kept to the page width with a gutter. */
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: var(--fs-base); line-height: var(--lh-body); text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--track-heading); line-height: var(--lh-snug); color: inherit; text-wrap: balance; }
+h1 { letter-spacing: var(--track-display); }
+p { text-wrap: pretty; }
+p, li { max-width: var(--measure); }
+::selection { background: var(--gold-soft); color: var(--ink); }
+a { color: var(--accent); text-underline-offset: .2em; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent-2); }
+
+/* Bands: full-bleed background; content kept to the page width with a gutter; generous vertical rhythm. */
 .band { padding-inline: max(var(--hv-gutter, 1.25rem), calc((100% - var(--hv-max, 76rem)) / 2 + var(--hv-gutter, 1.25rem))); }
+.band--dark { background: var(--grad-dark); color: var(--on-dark); }
+.band--dark a { color: var(--accent-bright); }
+.band--alt { background: var(--bg-alt); }
+
+/* Small caps label and the thin gold rule */
+.eyebrow, .label { font-size: var(--label-size); font-weight: 600; text-transform: uppercase; letter-spacing: var(--track-label); color: var(--muted); }
+.band--dark .eyebrow, .band--dark .label { color: var(--accent-bright); }
+.rule-gold { height: 1px; border: 0; background: var(--rule-gold); margin-block: var(--space-5); }
+
+/* Notes: general-information and fee notes read as calm, quiet panels with a gold edge */
+.guide-note { font-size: var(--fs-sm); padding: 1rem 1.25rem; border-radius: var(--radius); background: var(--surface-2); border-inline-start: 3px solid var(--gold); color: var(--ink-soft); max-width: var(--measure); }
+.band--dark .guide-note { background: rgba(255,255,255,.06); color: var(--on-dark-soft); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+table { border-collapse: collapse; width: 100%; }
+th { text-align: start; font-size: var(--label-size); text-transform: uppercase; letter-spacing: var(--track-label); color: var(--muted); font-weight: 600; }
+th, td { padding: .85rem 1rem; border-bottom: 1px solid var(--line); vertical-align: top; }
