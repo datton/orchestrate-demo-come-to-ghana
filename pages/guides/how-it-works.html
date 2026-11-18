@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works | Come to Ghana</title>
+<meta name="description" content="Choose a plan, pay with a test card, get your guide straight away.">
+<link rel="stylesheet" href="../../css/tokens.css"> <link rel="stylesheet" href="../../css/layout.css"> <link rel="stylesheet" href="../../css/site.css"> <link rel="stylesheet" href="../../css/shop/core.css">
+<script defer src="../../js/nav.js"></script> <script defer src="../../js/motion.js"></script> <script defer src="../../js/app.js"></script> <script defer src="../../js/shop/core.js"></script> <script defer src="../../js/shop/cart.js"></script>
+<style>
+  .how-hero h1 { font-size: clamp(2.75rem, 8vw, 6.5rem); letter-spacing: -.03em; line-height: 1; margin: 0 0 1.25rem; }
+  .how-hero p { max-width: 60ch; font-size: clamp(1.1rem, 2vw, 1.4rem); }
+  .how-steps { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: clamp(1.5rem, 4vw, 3rem); counter-reset: s; }
+  .how-steps li { counter-increment: s; display: grid; grid-template-columns: auto 1fr; gap: 1rem clamp(1rem, 4vw, 3rem); align-items: start; }
+  .how-steps li::before { content: counter(s); font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 700; line-height: .9; letter-spacing: -.04em; color: var(--accent, #006b3f); }
+  .how-steps h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin: 0 0 .5rem; letter-spacing: -.01em; }
+  .how-steps p { margin: 0; max-width: 55ch; font-size: clamp(1.05rem, 1.6vw, 1.25rem); }
+  .how-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+</style>
+</head>
+<body>
+<main id="main">
+  <section class="band how-hero">
+    <h1 data-words>From question to guide in four steps</h1>
+    <p data-reveal>No account to set up and no waiting for a reply. Pay, and what you bought is ready at once.</p>
+  </section>
+  <section class="band band--dark" aria-labelledby="how-h">
+    <h2 id="how-h" data-reveal>How it works</h2>
+    <ol class="how-steps">
+      <li data-reveal><div><h3>Choose your plan</h3><p>Read the guide for your traveller type, then pick the plan that matches. Each plan lists exactly what is included and its price in euro.</p></div></li>
+      <li data-reveal><div><h3>Pay with a test card</h3><p>This is a demonstration site, so payment runs in test mode and no real money moves. Use the card number 4242 4242 4242 4242 with any future date and any three digits.</p></div></li>
+      <li data-reveal><div><h3>Get your guide</h3><p>Your order is ready the moment payment goes through. The confirmation page shows what you bought, what to prepare and what happens next.</p></div></li>
+      <li data-reveal><div><h3>Find it again, and ask</h3><p>Every purchase stays under My purchases in this browser, with your guide unlocked. The order confirmation says how to reach us with questions about your plan.</p></div></li>
+    </ol>
+  </section>
+  <section class="band">
+    <p class="shop-testmoney" role="note">Test mode: payments here are a demonstration. No real money is taken.</p>
+    <p data-reveal>Guides and plans are general information, not legal, tax or immigration advice.</p>
+    <div class="how-cta">
+      <a class="shop-btn" href="index.html">Browse the guides</a>
+      <a class="shop-btn shop-btn--ghost" href="../services.html">See plans and prices</a>
+    </div>
+  </section>
+</main>
+</body>
+</html>

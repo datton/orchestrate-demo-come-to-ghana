@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guides | Come to Ghana</title>
+<meta name="description" content="Step-by-step guides for every kind of traveller to Ghana: what to prepare, costs and timelines, official sources.">
+<link rel="stylesheet" href="../../css/tokens.css"> <link rel="stylesheet" href="../../css/layout.css"> <link rel="stylesheet" href="../../css/site.css"> <link rel="stylesheet" href="../../css/shop/core.css">
+<script defer src="../../js/nav.js"></script> <script defer src="../../js/motion.js"></script> <script defer src="../../js/app.js"></script> <script defer src="../../js/shop/core.js"></script> <script defer src="../../js/shop/cart.js"></script>
+<script defer src="../../js/shop/guides.js"></script>
+<style>
+  .guides-hero h1 { font-size: clamp(2.75rem, 8vw, 6.5rem); letter-spacing: -.03em; line-height: 1; margin: 0 0 1.25rem; }
+  .guides-hero p { max-width: 60ch; font-size: clamp(1.1rem, 2vw, 1.4rem); }
+  #guide-filters { display: flex; flex-wrap: wrap; gap: .6rem; margin-block: 1.5rem; }
+  #guide-filters .shop-chip { font: inherit; font-weight: 600; border: 1.5px solid currentColor; background: transparent; cursor: pointer; padding: .55rem 1.1rem; }
+  #guide-filters .shop-chip[aria-pressed="true"] { background: var(--accent, #006b3f); color: var(--on-accent, #fff); border-color: var(--accent, #006b3f); }
+  #guide-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+  .guide-card h3 { font-size: 1.5rem; letter-spacing: -.01em; margin: .9rem 0 .5rem; }
+  .guide-card h3 a { color: inherit; text-decoration: none; }
+  .guide-card p { max-width: 45ch; }
+  .guide-card .shop-btn { margin-top: .75rem; }
+</style>
+</head>
+<body>
+<main id="main">
+  <section class="band guides-hero">
+    <h1 data-words>Guides for every way of getting to Ghana</h1>
+    <p data-reveal>Each guide goes step by step: what to prepare, what it costs and how long it takes, with the official source for every rule and the plan that helps you do it.</p>
+  </section>
+  <section class="band band--dark" aria-labelledby="guides-h">
+    <h2 id="guides-h" data-reveal>Choose your traveller type</h2>
+    <div id="guide-filters" role="group" aria-label="Filter guides by traveller type"></div>
+    <p id="guide-count" class="shop-note" aria-live="polite"></p>
+    <ul id="guide-list">
+      <li><a href="tourist.html">Visiting Ghana</a></li>
+      <li><a href="diaspora.html">Returning to Ghana</a></li>
+      <li><a href="business.html">Doing business in Ghana</a></li>
+      <li><a href="remote-work.html">Working remotely from Ghana</a></li>
+      <li><a href="property.html">Buying property in Ghana</a></li>
+      <li><a href="student.html">Studying in Ghana</a></li>
+    </ul>
+  </section>
+  <section class="band">
+    <p data-reveal><strong>General information only.</strong> These guides are not legal, tax or immigration advice. Rules change, so every guide shows an as-of date and links to the official source. Not sure where to start? See <a href="how-it-works.html">how it works</a>.</p>
+  </section>
+</main>
+</body>
+</html>
