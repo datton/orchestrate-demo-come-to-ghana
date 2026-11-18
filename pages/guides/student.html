@@ -8,40 +8,49 @@
 <link rel="stylesheet" href="../../css/tokens.css"> <link rel="stylesheet" href="../../css/layout.css"> <link rel="stylesheet" href="../../css/site.css"> <link rel="stylesheet" href="../../css/shop/core.css"> <link rel="stylesheet" href="../../css/shop/cart.css">
 <script defer src="../../js/nav.js"></script> <script defer src="../../js/motion.js"></script> <script defer src="../../js/app.js"></script> <script defer src="../../js/shop/core.js"></script> <script defer src="../../js/shop/cart.js"></script>
 <style>
-  .gd-hero h1 { font-size: clamp(2.75rem, 8vw, 6.5rem); letter-spacing: -.03em; line-height: 1; margin: 0 0 1.25rem; }
-  .gd-hero p { max-width: 60ch; font-size: clamp(1.1rem, 2vw, 1.4rem); }
-  .gd-asof { display: inline-block; font-family: var(--font-mono, monospace); font-size: .85rem; padding: .3rem .8rem; border-radius: 999px; background: rgba(0,0,0,.06); }
-  .gd-steps { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: clamp(1.5rem, 4vw, 3rem); counter-reset: s; }
-  .gd-steps li { counter-increment: s; display: grid; grid-template-columns: auto 1fr; gap: 1rem clamp(1rem, 4vw, 3rem); align-items: start; }
-  .gd-steps li::before { content: counter(s); font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 700; line-height: .9; letter-spacing: -.04em; color: var(--accent-bright, var(--accent, #006b3f)); }
-  .gd-steps h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin: 0 0 .5rem; letter-spacing: -.01em; }
-  .gd-steps p { margin: 0; max-width: 60ch; font-size: clamp(1.05rem, 1.6vw, 1.25rem); }
-  .gd-list { max-width: 65ch; padding-left: 1.2rem; font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
-  .gd-list li { margin-block: .7rem; }
-  .gd-table-wrap { overflow-x: auto; }
+  .gd-hero { min-height: 80svh; display: flex; flex-direction: column; justify-content: center; }
+  .gd-hero h1 { font-size: var(--fs-hero); line-height: .98; margin: 0 0 var(--space-4); max-width: 14ch; }
+  .gd-hero .lede { font-size: var(--fs-lg); max-width: 52ch; color: var(--ink-soft); }
+  .gd-asof { font-family: var(--font-mono); font-size: var(--fs-xs); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); }
+  .band > h2 { font-size: var(--fs-3xl); margin: 0 0 var(--space-5); max-width: 18ch; }
+  .gd-steps { list-style: none; margin: var(--space-5) 0 0; padding: 0; display: grid; gap: var(--space-6); counter-reset: s; }
+  .gd-steps li { counter-increment: s; display: grid; grid-template-columns: minmax(4.5rem, 9rem) 1fr; gap: var(--space-3) var(--space-5); align-items: start; max-width: none; border-top: 1px solid var(--line-dark); padding-top: var(--space-4); }
+  .gd-steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--font-display); font-size: var(--fs-3xl); line-height: 1; color: var(--accent-bright); font-variant-numeric: lining-nums; }
+  .gd-steps h3 { font-size: var(--fs-xl); margin: 0 0 .5rem; }
+  .gd-steps p { margin: 0; color: var(--on-dark-soft); font-size: var(--fs-lg); }
+  .gd-list { padding-left: 1.2rem; font-size: var(--fs-lg); }
+  .gd-list li { margin-block: .8rem; }
+  .gd-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); box-shadow: inset 0 0 0 1px var(--line); background: var(--surface); }
   .gd-table { width: 100%; border-collapse: collapse; min-width: 34rem; }
-  .gd-table th, .gd-table td { text-align: left; padding: .8rem 1rem; border-bottom: 1px solid var(--line, rgba(128,128,128,.3)); vertical-align: top; }
-  .gd-table th { font-family: var(--font-mono, monospace); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
-  .gd-warn { padding: 1.1rem 1.4rem; border-radius: 1rem; border-left: 5px solid var(--warn, #b45309); background: rgba(180,83,9,.1); max-width: 65ch; }
-  .gd-plan { display: grid; gap: 1rem; max-width: 40rem; }
-  .gd-price { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -.03em; line-height: 1; margin: 0; }
+  .gd-table th, .gd-table td { text-align: left; padding: 1rem 1.25rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .gd-table tr:last-child td { border-bottom: 0; }
+  .gd-table th { font-size: var(--fs-xs); letter-spacing: var(--track-label); text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .gd-warn { max-width: var(--measure); font-family: var(--font-display); font-size: var(--fs-xl); line-height: var(--lh-snug); padding-inline-start: var(--space-4); border-inline-start: 3px solid var(--gold); margin: 0 0 var(--space-5); }
+  .gd-plan { max-width: 44rem; }
+  .gd-price { font-size: var(--fs-giant); font-size: clamp(3.5rem, 2rem + 8vw, 7rem); line-height: 1; margin: 0 0 var(--space-3); }
+  .gd-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-block: var(--space-4); }
   .gd-src a { overflow-wrap: anywhere; }
-  .gd-cta { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  .gd-plan .shop-btn--ghost { color: var(--on-dark); box-shadow: inset 0 0 0 1px var(--on-dark); }
+  .gd-plan .shop-btn--ghost:hover { background: var(--on-dark); color: var(--bg-dark); }
+  @media (max-width: 40rem) { .gd-steps li { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 <main id="main">
   <section class="band gd-hero">
+    <p class="eyebrow">Student guide</p>
     <h1 data-words>Studying in Ghana</h1>
-    <p data-reveal>Student visas follow a different route from the online e-visa. Here is what we can confirm, what to prepare, and where to check the rest.</p>
+    <p class="lede" data-reveal>Student visas follow a different route from the online e-visa. Here is what we can confirm, what to prepare, and where to check the rest.</p>
     <p><span class="gd-asof">Facts as of 18.11.2026</span></p>
     <p class="guide-note" role="note">General information, not legal, tax or immigration advice. Confirm with the authority or a licensed Ghanaian adviser.</p>
   </section>
   <section class="band">
+    <p class="eyebrow">01</p>
     <h2 data-reveal>The route for students</h2>
     <p class="gd-warn" data-reveal><strong>Student visas are outside the e-visa.</strong> The online e-visa covers business and tourism only (EY, 06.2026), so the embassy route applies. We have not confirmed the student visa fees and document list: ask the Ghana mission for your country and your institution's admissions office. As of 18.11.2026.</p>
   </section>
   <section class="band band--dark">
+    <p class="eyebrow">02</p>
     <h2 data-reveal>Step by step</h2>
     <ol class="gd-steps">
       <li data-reveal><div><h3>Secure your admission letter</h3><p>Your institution's admission letter is the starting point for the student visa. Keep the original and a clear scan.</p></div></li>
@@ -52,6 +61,7 @@
     </ol>
   </section>
   <section class="band">
+    <p class="eyebrow">03</p>
     <h2 data-reveal>What to prepare</h2>
     <ul class="gd-list" data-reveal>
       <li>Passport valid for 6 months or more (apply the stricter rule: beyond your departure date).</li>
@@ -63,6 +73,7 @@
     </ul>
   </section>
   <section class="band">
+    <p class="eyebrow">04</p>
     <h2 data-reveal>Costs and timelines</h2>
     <div class="gd-table-wrap" data-reveal><table class="gd-table"><thead><tr><th scope="col">Item</th><th scope="col">Amount</th><th scope="col">As of / source</th></tr></thead><tbody>
 <tr><td>Our service fee (this plan)</td><td>See the price below, in EUR. Separate from government fees.</td><td>18.11.2026</td></tr>
@@ -73,6 +84,7 @@
     <p class="guide-note" data-reveal>Visa processing time for students is not confirmed. Start well before your term begins.</p>
   </section>
   <section class="band band--dark">
+    <p class="eyebrow">05</p>
     <h2 data-reveal>Arriving and settling in</h2>
     <ul class="gd-list" data-reveal>
       <li>Arrival airport: Accra International Airport (ACC), formerly Kotoka, renamed 23.02.2026.</li>
@@ -85,6 +97,7 @@
   </section>
   <section class="band"><p class="guide-note" role="note">We provide guidance and document preparation. We are not a government body, an embassy or a licensed immigration practitioner, and we never promise a visa.</p></section>
   <section class="band">
+    <p class="eyebrow">Official sources</p>
     <h2 data-reveal>Sources</h2>
     <p class="gd-src" data-reveal>All facts last checked 18.11.2026. Official sources:</p>
     <ul class="gd-list gd-src">
@@ -97,9 +110,10 @@
     </ul>
   </section>
   <section class="band band--dark" aria-labelledby="plan-h">
+    <p class="eyebrow">06</p>
     <h2 id="plan-h" data-reveal>The matching plan: Student</h2>
-    <div class="gd-plan" data-reveal>
-      <p class="gd-price" id="gd-price" aria-live="polite">&nbsp;</p>
+    <div class="gd-plan shop-card-dark" data-reveal>
+      <p class="gd-price shop-price" id="gd-price" aria-live="polite">&nbsp;</p>
       <p>Guidance on the embassy route, a document checklist and health preparation. Our service fee is separate from government fees. We never promise approval: the authority decides.</p>
       <div class="gd-cta">
         <button type="button" class="shop-btn" id="gd-add">Add the plan to your cart</button>
