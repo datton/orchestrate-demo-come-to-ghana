@@ -3,7 +3,7 @@
   'use strict';
   var Shop = window.Shop;
   var cat;
-  if (!Shop || !document.getElementById('sv-plans')) return;
+  if (!Shop || !document.getElementById('sv-panel')) return;
 
   function grp(id) { return cat.options[id]; }
   function allowed(it, g) {
@@ -56,16 +56,33 @@
     btn.addEventListener('click', function () { Shop.addToCart({ item: it.id, qty: 1, options: JSON.parse(JSON.stringify(sel)) }); });
   }
 
-  function planCard(it, i) {
-    var li = document.createElement('li'); li.id = 'svc-' + it.id; li.className = 'sv-plan' + (it.badge ? ' is-feature' : '');
-    li.setAttribute('data-reveal', ''); li.style.setProperty('--d', (i % 3) * 80 + 'ms');
-    var sel = defaults(it);
-    li.innerHTML = (it.badge ? '<span class="sv-badge">' + Shop.esc(it.badge) + '</span>' : '') +
-      '<h3>' + Shop.esc(it.name) + '</h3><p class="sv-price"><span class="sv-from">from</span> <output>' + Shop.money(total(it, sel)) + '</output></p>' +
-      '<p class="sv-desc">' + Shop.esc(it.desc) + '</p>' +
-      '<p class="sv-inc-h">What you get</p><ul class="sv-check">' + (it.includes || []).map(function (x) { return '<li>' + Shop.esc(x) + '</li>'; }).join('') + '</ul>' +
-      optionsHtml(it, 'p-' + it.id) + '<button type="button" class="shop-btn sv-add">Add to cart</button>';
-    wire(li, it); return li;
+  var PICK = { tourist: 'Visit as a tourist', business: 'Do business', property: 'Invest in property', returnee: 'Move home or return', student: 'Study', remote: 'Work remotely' };
+  var plans, panelEl, pickEl;
+
+  function show(id) {
+    var it = plans.filter(function (p) { return p.id === id; })[0]; if (!it) return;
+    [].forEach.call(pickEl.querySelectorAll('input'), function (i) { i.checked = i.value === id; });
+    var inc = cat.features.filter(function (f) { return it.features.indexOf(f.id) >= 0; });
+    var out = cat.features.filter(function (f) { return it.features.indexOf(f.id) < 0; });
+    panelEl.className = 'sv-panel' + (it.badge ? ' is-feature' : '');
+    panelEl.id = 'svc-' + it.id;
+    panelEl.innerHTML = '<div class="sv-inner"><div class="sv-buy">' + (it.badge ? '<span class="sv-badge">' + Shop.esc(it.badge) + '</span>' : '') +
+      '<h3>' + Shop.esc(it.name) + '</h3><p class="sv-price"><span class="sv-from">from</span> <output>' + Shop.money(total(it, defaults(it))) + '</output></p>' +
+      '<p class="sv-vat">Our service fee. Government fees are extra.</p><p class="sv-desc">' + Shop.esc(it.desc) + '</p>' +
+      optionsHtml(it, 'p-' + it.id) + '<button type="button" class="shop-btn sv-add">Add to cart</button></div>' +
+      '<div class="sv-what"><h4>Included</h4><ul class="sv-check">' + inc.map(function (f) { return '<li>' + Shop.esc(f.name) + '</li>'; }).join('') + '<li>Standard or express review, your choice</li></ul>' +
+      '<h4>Not included</h4><ul class="sv-cross">' + out.filter(function (f) { return f.id !== 'sources'; }).map(function (f) { return '<li>' + Shop.esc(f.name) + '</li>'; }).join('') +
+      '<li>Government and authority fees, paid by you</li></ul></div></div>';
+    wire(panelEl.firstChild, it);
+    try { history.replaceState(null, '', '#plans'); } catch (e) {}
+  }
+
+  function buildPicker() {
+    pickEl.innerHTML = plans.map(function (p, i) {
+      return '<label class="sv-pill"><input type="radio" name="sv-plan" value="' + p.id + '"' + (i === 0 ? ' checked' : '') + '><span>' + Shop.esc(PICK[p.id] || p.name) +
+        '</span><small>' + Shop.money(p.price) + (p.badge ? ' · ' + Shop.esc(p.badge) : '') + '</small></label>';
+    }).join('');
+    pickEl.addEventListener('change', function (e) { if (e.target.name === 'sv-plan') show(e.target.value); });
   }
 
   function miniCard(it) {
@@ -94,13 +111,13 @@
 
   Shop.catalog().then(function (c) {
     cat = c;
-    var plans = c.items.filter(function (i) { return i.category === 'plans' && !i.soldOut; });
-    fill('sv-plans', plans, planCard);
+    plans = c.items.filter(function (i) { return i.category === 'plans' && !i.soldOut; });
+    pickEl = document.getElementById('sv-pick'); panelEl = document.getElementById('sv-panel'); buildPicker(); show(plans[0].id);
     table(plans);
     fill('sv-guides', c.items.filter(function (i) { return i.category === 'guides' && !i.soldOut; }), miniCard);
     fill('sv-extras', c.items.filter(function (i) { return i.category === 'addons' && !i.soldOut; }), miniCard);
     if (location.hash) { var t = document.querySelector(location.hash); if (t) t.scrollIntoView(); }
   }).catch(function () {
-    document.getElementById('sv-plans').innerHTML = '<li class="shop-error">We could not load the plans. Please refresh the page.</li>';
+    document.getElementById('sv-panel').innerHTML = '<li class="shop-error">We could not load the plans. Please refresh the page.</li>';
   });
 })();
